@@ -112,76 +112,68 @@
         </div>
     </section>
     
-    <section id="results" class="py-20 bg-white overflow-hidden relative">
-      <div class="max-w-6xl mx-auto px-4 relative">
-    <h2 class="text-3xl font-bold text-center mb-12">Hall of Fame</h2>
-
-    <!-- Slider Wrapper -->
-    <div class="relative overflow-hidden">
-
-        <!-- Slides Container -->
-        <div id="hofSlider"
-            class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-
-            <!-- CARD 1 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="stu1.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Arjun K.</h3>
-                        <p class="text-sm text-gray-500 mb-3">Secured AIR 452</p>
-                        <p class="text-gray-600 italic text-sm">
-                            "The mentorship gave me absolute clarity on what to study and what to skip."
-                        </p>
+  <section id="results" class="py-20 bg-white overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4 relative">
+        <h2 class="text-4xl font-extrabold text-center mb-16 text-gray-900">Hall of Fame</h2>
+        
+        <button id="scrollLeftBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur shadow-xl border border-gray-100 rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:scale-110 transition hidden md:flex">
+            <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+        
+        <div id="testimonialContainer" class="flex overflow-x-auto pb-12 gap-8 snap-x snap-mandatory no-scrollbar px-4 md:px-12 scroll-smooth">
+            
+            <div class="min-w-[320px] md:min-w-[450px] snap-center bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex-shrink-0 transform transition hover:shadow-2xl">
+                <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                    <img src="stu1.png" alt="Arjun K." class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-8">
+                    <div class="flex text-amber-400 mb-3 text-lg">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Arjun K.</h3>
+                    <p class="text-indigo-600 font-bold mb-4">Secured AIR 452</p>
+                    <p class="text-gray-600 leading-relaxed italic">"The mentorship was the difference between a random engineering college and a top IIT. The structure saved me."</p>
                 </div>
             </div>
 
-            <!-- CARD 2 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="stu2.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Priya S.</h3>
-                        <p class="text-sm text-gray-500 mb-3">Secured AIR 1205</p>
-                        <p class="text-gray-600 italic text-sm">
-                            "Earlier I was studying randomly. This roadmap fixed everything."
-                        </p>
+            <div class="min-w-[320px] md:min-w-[450px] snap-center bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex-shrink-0 transform transition hover:shadow-2xl">
+                <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                    <img src="stu2.png" alt="Priya S." class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-8">
+                    <div class="flex text-amber-400 mb-3 text-lg">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Priya S.</h3>
+                    <p class="text-indigo-600 font-bold mb-4">Secured AIR 1205</p>
+                    <p class="text-gray-600 leading-relaxed italic">"Physics was my nightmare. The formula sheets and guidance changed everything in the last 60 days."</p>
                 </div>
             </div>
 
-            <!-- CARD 3 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="stu3.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Rohit M.</h3>
-                        <p class="text-sm text-gray-500 mb-3">Secured AIR 982</p>
-                        <p class="text-gray-600 italic text-sm">
-                            "The predicted questions matched the actual exam pattern closely."
-                        </p>
+            <div class="min-w-[320px] md:min-w-[450px] snap-center bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex-shrink-0 transform transition hover:shadow-2xl">
+                <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                    <img src="stu3.png" alt="Vikram R." class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-8">
+                    <div class="flex text-amber-400 mb-3 text-lg">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Vikram R.</h3>
+                    <p class="text-indigo-600 font-bold mb-4">Secured AIR 890</p>
+                    <p class="text-gray-600 leading-relaxed italic">"I finally knew what NOT to study. That focus is why I'm sitting in an IIT today. Truly grateful."</p>
                 </div>
             </div>
 
         </div>
 
+        <button id="scrollRightBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur shadow-xl border border-gray-100 rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:scale-110 transition hidden md:flex">
+            <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+    </div>
+</section>
+
+
+    
         <!-- Desktop Arrows -->
         <button onclick="slideHOF(-1)"
             class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
