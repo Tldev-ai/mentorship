@@ -633,20 +633,35 @@
         startTime = Date.now();
         localStorage.setItem('fakeTimerStart', startTime);
     }
+      
+ checkbox.addEventListener('change', function() {
+            const totalPrice = this.checked ? basePrice + addOnPrice : basePrice;
+            mainBtn.textContent = `Enroll Now @ ₹${totalPrice}`;
+            stickyPrice.textContent = `₹${totalPrice}`;
+        });
 
-    setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        let remaining = duration - (elapsed % duration);
+        function startPersistentTimer() {
+            const duration = 48 * 60 * 60 * 1000; // 48 hours
+            let startTime = localStorage.getItem('fakeTimerStart');
 
-        const hours = Math.floor(remaining / (1000 * 60 * 60));
-        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+            if (!startTime) {
+                startTime = Date.now();
+                localStorage.setItem('fakeTimerStart', startTime);
+            }
 
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-    }, 1000);
-}
+            setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                let remaining = duration - (elapsed % duration);
+
+                const hours = Math.floor(remaining / (1000 * 60 * 60));
+                const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
 
             setInterval(() => {
                 const distance = parseInt(endTime) - new Date().getTime();
