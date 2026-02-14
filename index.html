@@ -674,37 +674,42 @@ A 30-minute assessment changed my strategy and helped me reach my dream college.
             stickyPrice.textContent = `₹${totalPrice}`;
         });
 
-        function startPersistentTimer() {
-            const duration = 48 * 60 * 60 * 1000; // 48 hours
-            let startTime = localStorage.getItem('fakeTimerStart');
+function startPersistentTimer() {
+    const duration = 48 * 60 * 60 * 1000;
+    let startTime = localStorage.getItem('examShieldTimer');
 
-            if (!startTime) {
-                startTime = Date.now();
-                localStorage.setItem('fakeTimerStart', startTime);
-            }
+    if (!startTime) {
+        startTime = Date.now();
+        localStorage.setItem('examShieldTimer', startTime);
+    } else {
+        startTime = parseInt(startTime);
+    }
 
-            setInterval(() => {
-                const elapsed = Date.now() - startTime;
-                let remaining = duration - (elapsed % duration);
+    setInterval(() => {
+        const now = Date.now();
+        const elapsed = now - startTime;
+        const remaining = duration - elapsed;
 
-                const hours = Math.floor(remaining / (1000 * 60 * 60));
-                const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            }, 1000);
+        if (remaining <= 0) {
+            document.getElementById('hours').textContent = "00";
+            document.getElementById('minutes').textContent = "00";
+            document.getElementById('seconds').textContent = "00";
+            return;
         }
 
-            setInterval(() => {
-                const distance = parseInt(endTime) - new Date().getTime();
-                if (distance < 0) return;
-                document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }, 1000);
-        }
+        const hours = Math.floor((remaining / (1000 * 60 * 60)));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }, 1000);
+}
+
+
+
+            
 
         function initStickyBar() {
             const observer = new IntersectionObserver(entries => {
