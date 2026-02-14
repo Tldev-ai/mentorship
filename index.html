@@ -646,94 +646,119 @@ A 30-minute assessment changed my strategy and helped me reach my dream college.
         </div>
     </div>
 
+   
+
+
     <script>
-        const checkbox = document.getElementById('notes-addon');
-        const mainBtn = document.getElementById('main-cta');
-        const stickyPrice = document.getElementById('sticky-price');
-        const basePrice = 1499;
-        const addOnPrice = 299;
+    // Configuration
+    const DEADLINE = new Date("Feb 20, 2026 23:59:59 GMT+0530").getTime();
+    const OFFER_PRICE = 1499;
+    const FINAL_PRICE = 2999;
+    const ADDON_PRICE = 299;
 
-        checkbox.addEventListener('change', function() {
-            const totalPrice = this.checked ? basePrice + addOnPrice : basePrice;
-            mainBtn.textContent = `Enroll Now @ ₹${totalPrice}`;
-            stickyPrice.textContent = `₹${totalPrice}`;
-        });
+    // Elements
+    const elements = {
+        checkbox: document.getElementById('notes-addon'),
+        mainBtn: document.getElementById('main-cta'),
+        stickyPrice: document.getElementById('sticky-price'),
+        pricingSection: document.querySelector('#pricing .text-5xl'),
+        heroBtn: document.querySelector('a[href="#pricing"].bg-indigo-600'),
+        timer: {
+            h: document.getElementById('hours'),
+            m: document.getElementById('minutes'),
+            s: document.getElementById('seconds')
+        }
+    };
 
-        function startPersistentTimer() {
-    const duration = 48 * 60 * 60 * 1000; // 48 hours
-    let startTime = localStorage.getItem('fakeTimerStart');
+    function updateDisplay() {
+        const now = new Date().getTime();
+        const isExpired = now >= DEADLINE;
+        
+        // 1. Calculate Prices
+        const currentBase = isExpired ? FINAL_PRICE : OFFER_PRICE;
+        const total = elements.checkbox.checked ? currentBase + ADDON_PRICE : currentBase;
 
-    if (!startTime) {
-        startTime = Date.now();
-        localStorage.setItem('fakeTimerStart', startTime);
-    }
-      
- checkbox.addEventListener('change', function() {
-            const totalPrice = this.checked ? basePrice + addOnPrice : basePrice;
-            mainBtn.textContent = `Enroll Now @ ₹${totalPrice}`;
-            stickyPrice.textContent = `₹${totalPrice}`;
-        });
-
-function startPersistentTimer() {
-    const duration = 48 * 60 * 60 * 1000;
-    let startTime = localStorage.getItem('examShieldTimer');
-
-    if (!startTime) {
-        startTime = Date.now();
-        localStorage.setItem('examShieldTimer', startTime);
-    } else {
-        startTime = parseInt(startTime);
-    }
-
-    setInterval(() => {
-        const now = Date.now();
-        const elapsed = now - startTime;
-        const remaining = duration - elapsed;
-
-        if (remaining <= 0) {
-            document.getElementById('hours').textContent = "00";
-            document.getElementById('minutes').textContent = "00";
-            document.getElementById('seconds').textContent = "00";
-            return;
+        // 2. Update Text & UI
+        elements.mainBtn.textContent = isExpired ? `Enroll Now @ ₹${total}` : `Enroll Now @ ₹${total}`;
+        elements.stickyPrice.textContent = `₹${total}`;
+        
+        // Update the static pricing section text
+        if (elements.pricingSection) elements.pricingSection.textContent = `₹${currentBase}`;
+        
+        // Update Hero Button
+        if (elements.heroBtn && !isExpired) {
+             elements.heroBtn.textContent = `Get Full Access @ ₹${OFFER_PRICE}`;
+        } else if (elements.heroBtn) {
+             elements.heroBtn.textContent = `Enroll Now @ ₹${FINAL_PRICE}`;
         }
 
-        const hours = Math.floor((remaining / (1000 * 60 * 60)));
-        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+        // 3. Handle Expiration Logic
+        if (isExpired) {
+            elements.timer.h.textContent = "00";
+            elements.timer.m.textContent = "00";
+            elements.timer.s.textContent = "00";
+            
+            // Disable offer-specific UI
+            const banner = document.querySelector('.animate-pulse');
+            if (banner) banner.textContent = "⚠️ Final Batch Enrolling Now";
+            return true;
+        }
 
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-    }, 1000);
-}
+        // 4. Update Countdown Numbers
+        const diff = DEADLINE - now;
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
 
+        elements.timer.h.textContent = String(h).padStart(2, '0');
+        elements.timer.m.textContent = String(m).padStart(2, '0');
+        elements.timer.s.textContent = String(s).padStart(2, '0');
+        
+        return false;
+    }
 
+    // Initialize
+    function init() {
+        // Sticky Bar Observer
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const bar = document.getElementById('sticky-bar');
+                entry.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
+            });
+        }, { threshold: 0 });
+        observer.observe(document.querySelector('section'));
+
+        // Price Toggle Listener
+        elements.checkbox.addEventListener('change', updateDisplay);
+
+        // Start Clock
+        updateDisplay();
+        const clockInterval = setInterval(() => {
+            if (updateDisplay()) clearInterval(clockInterval);
+        }, 1000);
+    }
+
+    // Slider Functions
+    function slideHOF(direction) {
+        const s = document.getElementById('hofSlider');
+        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+    }
+    
+    function slideMentor(direction) {
+        const s = document.getElementById('mentorSlider');
+        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+    }
+
+    function slideParent(direction) {
+        const s = document.getElementById('parentSlider');
+        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+    }
+
+    window.onload = init;
+</script>
 
             
 
-        function initStickyBar() {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => entry.isIntersecting ? document.getElementById('sticky-bar').classList.remove('visible') : document.getElementById('sticky-bar').classList.add('visible'));
-            }, { threshold: 0 });
-            observer.observe(document.querySelector('section'));
-        }
         
-        
-        
-        function slideHOF(direction) {
-    const slider = document.getElementById('hofSlider');
-    const width = slider.clientWidth;
-    slider.scrollBy({ left: direction * width, behavior: 'smooth' });
-}
-
-
-        
-
-        window.onload = () => { 
-    startPersistentTimer(); 
-    initStickyBar(); 
-};
-
-    </script>
 </body>
 </html>
