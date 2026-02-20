@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .sticky-cta { transform: translateY(100%); tranƒƒsition: transform 0.3s ease-in-out; }
+        .sticky-cta { transform: translateY(100%); transition: transform 0.3s ease-in-out;  }
         .sticky-cta.visible { transform: translateY(0); }
         #notes-addon:checked + div { border-color: #ca8a04; background-color: #fefce8; border-style: solid; box-shadow: 0 4px 6px -1px rgba(202, 138, 4, 0.1); }
         #notes-addon:checked + div .checkbox-square { background-color: #eab308; border-color: #eab308; }
@@ -745,7 +745,9 @@ A 30-minute assessment changed my strategy and helped me reach my dream college.
                 <span class="text-xs text-gray-400 line-through">₹5000</span>
                 <span id="sticky-price" class="text-lg font-bold text-gray-900">₹1499</span>
             </div>
-            <a href="#pricing" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md">Enroll Now</a>
+            <a id="sticky-cta" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md cursor-pointer">
+Enroll Now
+</a>
         </div>
     </div>
 
@@ -840,6 +842,14 @@ A 30-minute assessment changed my strategy and helped me reach my dream college.
 
         // Price Toggle Listener
         elements.checkbox.addEventListener('change', updateDisplay);
+        // MAIN CTA CLICK REDIRECT
+elements.mainBtn.addEventListener('click', function () {
+    if (elements.checkbox.checked) {
+        window.location.href = "https://payments.cashfree.com/forms/jee-premium-1698";
+    } else {
+        window.location.href = "https://payments.cashfree.com/forms/jee-strategy-1499";
+    }
+});
 
         // Start Clock
         updateDisplay();
