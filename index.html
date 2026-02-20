@@ -851,6 +851,19 @@ elements.mainBtn.addEventListener('click', function () {
     }
 });
 
+        // STICKY CTA CLICK REDIRECT
+const stickyBtn = document.getElementById("sticky-cta");
+
+if (stickyBtn) {
+    stickyBtn.addEventListener("click", function () {
+        if (elements.checkbox.checked) {
+            window.location.href = "https://payments.cashfree.com/forms/jee-premium-1698";
+        } else {
+            window.location.href = "https://payments.cashfree.com/forms/jee-strategy-1499";
+        }
+    });
+}
+
         // Start Clock
         updateDisplay();
         const clockInterval = setInterval(() => {
