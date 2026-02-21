@@ -14,32 +14,41 @@
 
 <style>
 :root {
---bg: #FAFAF8;
---bg-dark: #0F0F0F;
---bg-card: #FFFFFF;
---bg-highlight: #FFF8E7;
---text-primary: #1A1A1A;
---text-secondary: #555555;
---text-muted: #888888;
---accent: #E63B2E;
---accent-dark: #C52D22;
---accent-glow: rgba(230, 59, 46, 0.15);
---blue: #2D5BE3;
---blue-light: #EEF2FF;
---green: #1B8A4A;
---green-light: #EDFCF2;
---gold: #D4920B;
---gold-light: #FFF8E7;
---border: #E8E8E4;
---border-strong: #D0D0CC;
---shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
---shadow-md: 0 4px 16px rgba(0,0,0,0.08);
---shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
---shadow-glow: 0 0 40px rgba(230,59,46,0.12);
---radius: 12px;
---radius-lg: 20px;
-}
+  --bg: #FAFAF8;
+  --bg-dark: #3E35A6;            /* deep purple sections */
+  --bg-card: #FFFFFF;
+  --bg-highlight: #F2F1FF;       /* soft purple tint */
 
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+
+  /* 🔮 PRIMARY PURPLE SYSTEM */
+  --accent: #5B4BDB;             /* main purple */
+  --accent-dark: #4C3FD1;        /* hover / darker */
+  --accent-glow: rgba(91,75,219,0.18);
+
+  /* replace old blue usage with purple */
+  --blue: #5B4BDB;
+  --blue-light: #F2F1FF;
+
+  /* keep these as-is */
+  --green: #1B8A4A;
+  --green-light: #EDFCF2;
+  --gold: #D4920B;
+  --gold-light: #FFF8E7;
+
+  --border: #E8E8E4;
+  --border-strong: #D0D0CC;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-glow: 0 0 40px rgba(91,75,219,0.15);
+
+  --radius: 12px;
+  --radius-lg: 20px;
+}
     body {
         font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
         background: var(--bg);
@@ -574,6 +583,7 @@
         .hero { padding: 44px 0 36px; }
         .hero-trust { gap: 16px; }
     }
+    
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
