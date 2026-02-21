@@ -10,7 +10,8 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="[suspicious link removed]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 :root {
 --bg: #FAFAF8;
@@ -1206,9 +1207,9 @@ if (elements.stickyPrice) elements.stickyPrice.textContent = `₹${total}`;
 if (elements.pricingSection) elements.pricingSection.textContent = `₹${currentBase}`;
 
 if (isExpired) {
-    elements.timer.h.textContent = &quot;00&quot;;
-    elements.timer.m.textContent = &quot;00&quot;;
-    elements.timer.s.textContent = &quot;00&quot;;
+    elements.timer.h.textContent = "00";
+    elements.timer.m.textContent = "00";
+    elements.timer.s.textContent = "00";
     return true;
 }
 
@@ -1217,10 +1218,9 @@ const h = Math.floor(diff / (1000 * 60 * 60));
 const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-elements.timer.h.textContent = String(h).padStart(2, &#39;0&#39;);
-elements.timer.m.textContent = String(m).padStart(2, &#39;0&#39;);
-elements.timer.s.textContent = String(s).padStart(2, &#39;0&#39;);
-
+elements.timer.h.textContent = String(h).padStart(2, '0');
+elements.timer.m.textContent = String(m).padStart(2, '0');
+elements.timer.s.textContent = String(s).padStart(2, '0');
 return false;
 }
 
@@ -1231,7 +1231,14 @@ const diff = Math.ceil((jeeDate - now) / (1000 * 60 * 60 * 24));
 const el = document.getElementById('daysLeft');
 if (el && diff > 0) el.textContent = diff;
 }
-
+function paymentAction() {
+    if (elements.checkbox.checked) {
+        window.location.href = "https://payments.cashfree.com/forms/jee-premium-1698";
+    } else {
+        window.location.href = "https://payments.cashfree.com/forms/jee-strategy-1499";
+    }
+}
+    
 function init() {
 updateJeeCountdown();
 const stickyObserver = new IntersectionObserver(entries => {
@@ -1242,19 +1249,14 @@ entry.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visi
 }, { threshold: 0 });
 stickyObserver.observe(document.querySelector('section'));
 
-elements.checkbox.addEventListener(&#39;change&#39;, updateDisplay);
+    elements.checkbox.addEventListener('change', updateDisplay);
+elements.mainBtn.addEventListener('click', paymentAction);
+    
 
-const paymentAction = function () {
-    if (elements.checkbox.checked) {
-        window.location.href = &quot;[https://payments.cashfree.com/forms/jee-premium-1698](https://payments.cashfree.com/forms/jee-premium-1698)&quot;;
-    } else {
-        window.location.href = &quot;[https://payments.cashfree.com/forms/jee-strategy-1499](https://payments.cashfree.com/forms/jee-strategy-1499)&quot;;
-    }
-};
 
-elements.mainBtn.addEventListener(&#39;click&#39;, paymentAction);
-const stickyBtn = document.getElementById(&quot;sticky-cta&quot;);
-if (stickyBtn) stickyBtn.addEventListener(&quot;click&quot;, paymentAction);
+
+const stickyBtn = document.getElementById("sticky-cta");
+if (stickyBtn) stickyBtn.addEventListener("click", paymentAction);
 
 updateDisplay();
 setInterval(updateDisplay, 1000);
