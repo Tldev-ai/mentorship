@@ -1,868 +1,1287 @@
 <!DOCTYPE html>
+
 <html lang="en" class="scroll-smooth">
 <head>
-    <base href="https://mentorship-blue-gamma.vercel.app/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IIT-JEE mentorship with chapter-wise important questions, predicted high-frequency questions, formula sheets, and a clear day-by-day roadmap. One-time access.">
-    <title>Exam Sheild Mentorship - Enroll Now</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .sticky-cta { transform: translateY(100%); transition: transform 0.3s ease-in-out;  }
-        .sticky-cta.visible { transform: translateY(0); }
-        #notes-addon:checked + div { border-color: #ca8a04; background-color: #fefce8; border-style: solid; box-shadow: 0 4px 6px -1px rgba(202, 138, 4, 0.1); }
-        #notes-addon:checked + div .checkbox-square { background-color: #eab308; border-color: #eab308; }
-        #notes-addon:checked + div .check-icon { opacity: 1; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
+<base href="https://mentorship-blue-gamma.vercel.app/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IIT-JEE mentorship with chapter-wise important questions, predicted high-frequency questions, formula sheets, and a clear day-by-day roadmap. One-time access.">
+<title>Exam Sheild Mentorship - Enroll Now</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="[suspicious link removed]">
+<style>
+:root {
+--bg: #FAFAF8;
+--bg-dark: #0F0F0F;
+--bg-card: #FFFFFF;
+--bg-highlight: #FFF8E7;
+--text-primary: #1A1A1A;
+--text-secondary: #555555;
+--text-muted: #888888;
+--accent: #E63B2E;
+--accent-dark: #C52D22;
+--accent-glow: rgba(230, 59, 46, 0.15);
+--blue: #2D5BE3;
+--blue-light: #EEF2FF;
+--green: #1B8A4A;
+--green-light: #EDFCF2;
+--gold: #D4920B;
+--gold-light: #FFF8E7;
+--border: #E8E8E4;
+--border-strong: #D0D0CC;
+--shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+--shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+--shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+--shadow-glow: 0 0 40px rgba(230,59,46,0.12);
+--radius: 12px;
+--radius-lg: 20px;
+}
+
+    body {
+        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        padding-bottom: 72px;
+    }
+
+    .container {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(250,250,248,0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
+    }
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 960px;
+    }
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--text-primary);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+    }
+    .navbar-brand span { color: var(--accent); }
+    .navbar-cta {
+        background: var(--accent);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s;
+        letter-spacing: 0.01em;
+    }
+    .navbar-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .urgency-bar {
+        margin-top: 56px;
+        background: var(--bg-dark);
+        color: white;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+    .urgency-bar .countdown-num {
+        display: inline-block;
+        background: var(--accent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 800;
+        margin: 0 2px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .hero {
+        padding: 56px 0 48px;
+        text-align: center;
+    }
+    .hero-eyebrow {
+        display: inline-block;
+        background: var(--green-light);
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 100px;
+        margin-bottom: 28px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+    .hero h1 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: clamp(1.85rem, 5.5vw, 2.75rem);
+        line-height: 1.2;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero h1 .highlight-line {
+        color: var(--accent);
+    }
+    .hero-sub {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+        line-height: 1.65;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-cta-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 36px;
+    }
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: white;
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-size: 1.02rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.25s;
+        box-shadow: 0 4px 20px rgba(230,59,46,0.3);
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+        background: var(--accent-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 28px rgba(230,59,46,0.4);
+    }
+    .btn-subtext {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+    .hero-trust {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+    }
+    .trust-item .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+    }
+    .trust-item .icon.green { background: var(--green-light); color: var(--green); }
+    .trust-item .icon.blue { background: var(--blue-light); color: var(--blue); }
+    .trust-item .icon.gold { background: var(--gold-light); color: var(--gold); }
+
+    section { padding: 56px 0; }
+    .section-label {
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin-bottom: 12px;
+    }
+    .section-title {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: clamp(1.5rem, 4vw, 2.1rem);
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin-bottom: 36px;
+        line-height: 1.65;
+    }
+    .divider {
+        width: 48px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 3px;
+        margin: 0 auto 40px;
+    }
+
+    .pain-section {
+        background: white;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+    .pain-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .pain-card:last-child { border-bottom: none; }
+    .pain-icon {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: #FEF2F2;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        margin-top: 2px;
+    }
+    .pain-card p {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        line-height: 1.6;
+    }
+    .pain-closing {
+        text-align: center;
+        padding-top: 32px;
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+    }
+    .pain-closing strong {
+        color: var(--text-primary);
+        display: block;
+        font-size: 1.15rem;
+        margin-top: 8px;
+    }
+
+    .story-section {
+        background: var(--bg);
+    }
+    .story-box {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 40px 32px;
+        box-shadow: var(--shadow-sm);
+    }
+    .story-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+    }
+    .story-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), #FF6B5A);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    .story-meta h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+    .story-meta p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+    .story-credential {
+        display: inline-block;
+        background: var(--gold-light);
+        color: var(--gold);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-top: 4px;
+    }
+    .story-content p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 18px;
+        line-height: 1.75;
+    }
+    .story-content .emphasis {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+    .story-content .emotional {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: 1.15rem;
+        color: var(--text-primary);
+        line-height: 1.5;
+        padding: 20px 0;
+        text-align: center;
+        font-style: italic;
+    }
+    .story-callout {
+        background: #FEF2F2;
+        border-left: 3px solid var(--accent);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        line-height: 1.65;
+    }
+    .story-result {
+        background: var(--green-light);
+        border-left: 3px solid var(--green);
+        padding: 16px 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        line-height: 1.65;
+    }
+    .story-mission {
+        text-align: center;
+        padding-top: 24px;
+        margin-top: 24px;
+        border-top: 1px solid var(--border);
+    }
+    .story-mission p {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: 1.15rem;
+        color: var(--text-primary);
+        line-height: 1.5;
+        font-style: italic;
+        margin-bottom: 8px !important;
+    }
+    .story-mission .attribution {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.8rem !important;
+        color: var(--text-muted) !important;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .solution-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .step-card {
+        display: flex;
+        gap: 20px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+    }
+    .step-card:last-child { border-bottom: none; }
+    .step-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-dark);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        font-weight: 800;
+        margin-top: 2px;
+    }
+    .step-content h3 {
+        font-size: 1.02rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--text-primary);
+    }
+    .step-content p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+    }
+    .step-timing {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--blue);
+        background: var(--blue-light);
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .toolkit-section { background: var(--bg); }
+    .toolkit-grid {
+        display: grid;
+        gap: 14px;
+    }
+    .toolkit-item {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        transition: all 0.2s;
+    }
+    .toolkit-item:hover {
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow-sm);
+    }
+    .toolkit-icon {
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    .toolkit-icon.red { background: #FEF2F2; }
+    .toolkit-icon.blue { background: var(--blue-light); }
+    .toolkit-icon.green { background: var(--green-light); }
+    .toolkit-icon.gold { background: var(--gold-light); }
+    .toolkit-item h4 {
+        font-size: 0.92rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+    }
+    .toolkit-item p {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+    .toolkit-badge {
+        display: inline-block;
+        background: var(--green-light);
+        color: var(--green);
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 100px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+    }
+
+    .audience-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    @media (max-width: 550px) { .audience-grid { grid-template-columns: 1fr; } }
+    .audience-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        background: var(--bg);
+        transition: all 0.2s;
+    }
+    .audience-card:hover {
+        border-color: var(--accent);
+        background: white;
+    }
+    .audience-card .emoji {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+    .audience-card h4 {
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+    .audience-card p {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+
+    .sticky-cta { transform: translateY(100%); transition: transform 0.3s ease-in-out; }
+    .sticky-cta.visible { transform: translateY(0); }
+    #notes-addon:checked + div { border-color: #ca8a04; background-color: #fefce8; border-style: solid; box-shadow: 0 4px 6px -1px rgba(202, 138, 4, 0.1); }
+    #notes-addon:checked + div .checkbox-square { background-color: #eab308; border-color: #eab308; }
+    #notes-addon:checked + div .check-icon { opacity: 1; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-up.d1 { animation-delay: 0.1s; }
+    .fade-up.d2 { animation-delay: 0.2s; }
+    .fade-up.d3 { animation-delay: 0.3s; }
+    .fade-up.d4 { animation-delay: 0.4s; }
+
+    @media (max-width: 600px) {
+        .container { padding: 0 16px; }
+        section { padding: 44px 0; }
+        .story-box { padding: 28px 20px; }
+        .hero { padding: 44px 0 36px; }
+        .hero-trust { gap: 16px; }
+    }
+</style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
 
-    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-indigo-600 tracking-tight">Exam<span class="text-gray-900">Sheild</span></span>
-                </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#curriculum" class="text-gray-600 hover:text-indigo-600 font-medium transition">Curriculum</a>
-                    <a href="#results" class="text-gray-600 hover:text-indigo-600 font-medium transition">Results</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-indigo-600 font-medium transition">Pricing</a>
-                </nav>
-                <a href="#pricing" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-bold rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-lg">Enroll Now</a>
-            </div>
-        </div>
-    </header>
+<nav class="navbar">
+<div class="container">
+<a href="#" class="navbar-brand">IIT<span>utions</span> <span style="font-weight:400; font-size:0.75rem; color:#999; margin-left:2px;">Mentorship</span></a>
+<a href="#pricing" class="navbar-cta">Enroll ₹1,499 →</a>
+</div>
+</nav>
 
-    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white relative overflow-hidden border-b border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-red-50 text-red-600 text-sm font-semibold mb-6 border border-red-100 animate-pulse">
-                🔥 Limited Batch: 10,000+ Students Already Enrolled
-            </span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                Stop Studying Randomly.<br>
-                <span class="text-indigo-600">Start Scoring Strategically.</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                The only mentorship framework designed by <strong>Top-Ranked Subject Experts</strong> to help you crack <strong>IIT JEE</strong> with a predictable roadmap.
-            </p>
-
-          <div class="text-left bg-white rounded-2xl shadow-xl border border-gray-200 p-6 md:p-10 my-12 max-w-3xl mx-auto">
-                <div class="text-center mb-8">
-                    <span class="text-indigo-600 font-bold tracking-wider uppercase text-xs px-3 py-1 bg-indigo-50 rounded-full">
-                        <i class="fa-solid fa-user-graduate mr-2"></i>Founder’s Story
-                    </span>
-                    <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-4 leading-tight">
-                        “I was working 12 hours a day, but my rank wasn't moving.”
-                    </h2>
-                </div>
-                
-                <div class="space-y-6 text-gray-700 text-base md:text-lg leading-relaxed">
-                    <p class="font-medium italic text-gray-500 bg-gray-50 p-4 rounded-lg border border-gray-100">
-                        Buying books… watching random lectures… saving PDFs… solving questions… but still feeling lost.
-                    </p>
-                    
-                    <p>
-                        I realized too late that IIT-JEE isn't a test of how much you study—it’s a test of how 
-                        <span class="text-indigo-600 font-bold italic">strategically you execute.</span> 
-                    </p>
-
-                    <div class="bg-gradient-to-r from-indigo-600 to-blue-700 p-6 rounded-2xl text-white shadow-lg transform -rotate-1">
-                        <h3 class="text-xl font-bold mb-2 text-center">The Turning Point:</h3>
-                        <p class="text-indigo-100 italic font-medium text-center">
-                            "Stop studying harder. Start studying the RIGHT things in the RIGHT order."
-                        </p>
-                    </div>
-
-                    <div class="text-center pt-6 border-t border-gray-100">
-                        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">My Only Mission</p>
-                        <p class="text-lg font-serif italic text-gray-800">
-                            "To ensure no student ever feels confused again."
-                        </p>
-                        <p class="font-bold text-indigo-700 text-sm mt-2">— Founder, iiHub LLP</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="curriculum" class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight text-indigo-600">The "Execution Blueprint"</h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">Get the core 1-on-1 strategy session plus our complete premium resource vault.</p>
-            
-            <div class="bg-indigo-50 rounded-3xl p-8 md:p-12 border-4 border-indigo-200 flex flex-col md:flex-row items-center gap-10 mb-12 text-left shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 bg-indigo-600 text-white text-[10px] font-black px-4 py-1 uppercase tracking-widest">Core Experience</div>
-                <div class="bg-indigo-600 p-6 rounded-2xl text-white shadow-xl flex-shrink-0">
-                    <i class="fa-solid fa-video text-5xl"></i>
-                </div>
-                <div>
-                    <h3 class="text-3xl font-black mb-4 text-indigo-900">Live 1-on-1 Strategy Session</h3>
-                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
-                        A deep-dive call with our top faculty to identify your specific weak points and build your <strong>exact roadmap</strong> till exam day.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-10 uppercase">
-                🎁 Massive Bonus Pack <span class="text-indigo-600 underline">(Included FREE)</span>
-            </h3>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-16">
-                <div class="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-lg relative overflow-hidden transform hover:scale-105 transition">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-black px-3 py-1 uppercase rounded-bl-lg shadow-sm">100% FREE</div>
-                    <div class="text-blue-600 text-3xl mb-4"><i class="fa-solid fa-bolt"></i></div>
-                    <h4 class="font-black text-gray-900 mb-2">High-Weightage Qs</h4>
-                    <p class="text-gray-500 text-xs">Target only questions that actually show up in JEE.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-lg relative overflow-hidden transform hover:scale-105 transition">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-black px-3 py-1 uppercase rounded-bl-lg shadow-sm">100% FREE</div>
-                    <div class="text-green-600 text-3xl mb-4"><i class="fa-solid fa-fire"></i></div>
-                    <h4 class="font-black text-gray-900 mb-2">Top 100 Predicted Qs</h4>
-                    <p class="text-gray-500 text-xs">Highest probability patterns analyzed by NTA experts.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-lg relative overflow-hidden transform hover:scale-105 transition">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-black px-3 py-1 uppercase rounded-bl-lg shadow-sm">100% FREE</div>
-                    <div class="text-orange-600 text-3xl mb-4"><i class="fa-solid fa-shield-heart"></i></div>
-                    <h4 class="font-black text-gray-900 mb-2">Common Errors Guide</h4>
-                    <p class="text-gray-500 text-xs">Identify and kill "silly mistakes" before they kill your rank.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-lg relative overflow-hidden transform hover:scale-105 transition">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-black text-[10px] font-black px-3 py-1 uppercase rounded-bl-lg shadow-sm">100% FREE</div>
-                    <div class="text-purple-600 text-3xl mb-4"><i class="fa-solid fa-rocket"></i></div>
-                    <h4 class="font-black text-gray-900 mb-2">7-Day Recovery Plan</h4>
-                    <p class="text-gray-500 text-xs">Clear your huge backlogs in just one week.</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <a href="#pricing" class="px-12 py-5 text-2xl font-black rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 shadow-2xl transition transform hover:-translate-y-1">
-                    Unlock Your Strategy Call @ ₹1499
-                </a>
-                <p class="mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                   <i class="fa-solid fa-lock"></i> SSL Secured • GST Compliant
-                </p>
-            </div>
-        </div>
-    </section>
-            
-            
-
-    <section class="py-16 bg-gray-50 border-t border-gray-200">
-        <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10">Why are you struggling?</h2>
-            <div class="space-y-4">
-                <div class="flex items-start p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                    <i class="fa-solid fa-xmark-circle text-red-500 mt-1 mr-4 text-xl"></i>
-                    <p class="text-gray-700 font-medium">You have tons of books but <strong>don't know what to study first</strong>.</p>
-                </div>
-                <div class="flex items-start p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                    <i class="fa-solid fa-xmark-circle text-red-500 mt-1 mr-4 text-xl"></i>
-                    <p class="text-gray-700 font-medium">You feel overwhelmed and anxious about the approaching date.</p>
-                </div>
-                
-                <div class="flex items-start p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                    <i class="fa-solid fa-xmark-circle text-red-500 mt-1 mr-4 text-xl"></i>
-                    <p class="text-gray-700 font-medium">You revise the same chapters repeatedly but still make mistakes in exams.</p>
-                </div>
-                
-                <div class="flex items-start p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                    <i class="fa-solid fa-xmark-circle text-red-500 mt-1 mr-4 text-xl"></i>
-                    <p class="text-gray-700 font-medium">You practice a lot, but questions in the exam feel unfamiliar and tricky.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    
-    <section id="results" class="py-20 bg-white overflow-hidden relative">
-      <div class="max-w-6xl mx-auto px-4 relative">
-    <h2 class="text-3xl font-bold text-center mb-12">Transformations</h2>
-
-    <!-- Slider Wrapper -->
-    <div class="relative overflow-hidden">
-
-        <!-- Slides Container -->
-        <div id="hofSlider"
-            class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-
-            <!-- CARD 1 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="stu1.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Dr K B Nikshiptha</h3>
-                        <p class="text-sm text-gray-500 mb-3">Student in KMC warangal
-IIT Rank 2252</p>
-                        <p class="text-gray-600 italic text-sm">
-                           Regular preparation didn’t get me into a good medical college.
-A 30-minute assessment changed my strategy and helped me reach my dream college.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="st2.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">Stains koduri</h3>
-                        <p class="text-sm text-gray-500 mb-3"> NITW 2512</p>
-                        <p class="text-gray-600 italic text-sm">
-                            My teachers are very good and i did my inter from a good college. Everything is fine but a small clarity is missing, why im not able to score best in my week tests and grand teats then i had a small assessment and it really helped me alot to boost my rank
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                    <img src="stu3.png" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <div class="flex text-indigo-500 mb-2">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <h3 class="text-lg font-bold">tummala baladitya</h3>
-                        <p class="text-sm text-gray-500 mb-3">NITW 1517</p>
-                        <p class="text-gray-600 italic text-sm">
-                            "The predicted questions matched the actual exam pattern closely."
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Desktop Arrows -->
-        <button onclick="slideHOF(-1)"
-            class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <button onclick="slideHOF(1)"
-            class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-    </div>
+<div class="urgency-bar">
+JEE Mains 2026 is <span class="countdown-num" id="daysLeft">--</span> days away — Every day without a plan = marks lost.
 </div>
 
-        
-    </section>
-    
-    
-      <section class="py-16 px-4 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="font-serif text-3xl font-bold text-center mb-4">Unfiltered Feedback</h2>
-            <p class="text-center text-gray-500 mb-10">Real conversations. No edits.</p>
-            
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar">
-                <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
-                    <img src="w1.png" alt="WhatsApp Review 1" class="w-full h-auto">
-                </div>
-                <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
-                    <img src="w2.png" alt="WhatsApp Review 2" class="w-full h-auto">
-                </div>
-                <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
-                    <img src="w3.png" alt="WhatsApp Review 3" class="w-full h-auto">
-                </div>
-                <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
-                    <img src="w4.png" alt="WhatsApp Review 3" class="w-full h-auto">
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <p class="text-sm font-semibold text-whatsapp flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-3.138-5.437-2.1-12.866 2.459-17.426 4.608-4.608 12.086-4.608 16.695.0 4.608 4.608 4.608 12.086.0 16.695-4.608 4.608-12.086 4.608-16.695.0l-4.146 6.894zm5.597-8.121c-2.433-4.215-1.071-9.697 3.033-12.24 4.098-2.54 9.42-1.259 11.96 2.84 2.541 4.099 1.259 9.42-2.84 11.96-2.071 1.282-4.47 1.66-6.732 1.053l-2.618 4.354 1.197-4.373c-1.424-1.127-2.671-2.375-4.0-3.594zm11.26-2.04c.839.421 1.229 1.002 1.134 1.637-.156 1.057-2.31 2.31-3.344 1.838-.458-.209-6.852-3.155-7.962-8.586-.547-2.677 1.579-4.187 2.686-3.801.428.149 1.947 3.469 1.611 4.161-.202.417-.905.972-1.229 1.11-.324.138-1.551-.047 1.109 4.332 2.054 3.382 3.829 2.508 4.195 2.14.366-.366 1.34-1.574 1.8-1.831z"/></svg>
-                    Verified WhatsApp Chats
-                </p>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="container">
+<div class="hero-eyebrow fade-up">✦ IITutions (Since 2017) — 10,000+ Students Guided</div>
 
+<h1 class="fade-up d1">
+  You Study 8 Hours a Day.<br>
+  <span class="highlight-line">But Nobody Built a Plan for YOU.</span>
+</h1>
 
-
-    <section id="mentors" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 relative">
-    <div class="text-center mb-12">
-        <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">The Masterminds</span>
-        <h2 class="text-3xl font-bold text-gray-900 mt-2">Guided by Seasoned Minds</h2>
-    </div>
-
-    <div class="relative overflow-hidden">
-
-        <!-- Slider -->
-        <div id="mentorSlider"
-            class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-
-            <!-- Mentor 1 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-                    <img src="t1.png"
-                        class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-                    <h3 class="text-xl font-bold">Sharath.k</h3>
-                    <p class="text-indigo-600 text-sm mb-4">Sr Physics lecturer, Mentor and jee strategist.| 10 years in teaching and 7 years in mentoring. </p>
-                    <p class="text-gray-600 italic text-sm">
-                        "In the journey to the IITs, hard work is the engine, but strategy is the steering wheel. Without a map, even the fastest car gets lost"
-                    </p>
-                </div>
-            </div>
-
-            <!-- Mentor 2 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-                    <img src="t2.png"
-                        class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-                    <h3 class="text-xl font-bold">Prudhvi</h3>
-                    <p class="text-indigo-600 text-sm mb-4">Physics Pedagogy Expert</p>
-                    <p class="text-gray-600 italic text-sm">
-                        "Recall any formula in under 30 seconds during pressure."
-                    </p>
-                </div>
-            </div>
-
-            <!-- Mentor 3 -->
-            <div class="w-full flex-shrink-0 snap-center px-4">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-                    <img src="https://placehold.co/150x150/green/white?text=Neha+Ma'am"
-                        class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-                    <h3 class="text-xl font-bold">Neha Gupta</h3>
-                    <p class="text-indigo-600 text-sm mb-4">NIT Graduate | Maths Expert</p>
-                    <p class="text-gray-600 italic text-sm">
-                        "Solve the right 20 questions. That’s the rank booster."
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Arrows -->
-        <button onclick="slideMentor(-1)"
-            class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <button onclick="slideMentor(1)"
-            class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-
-    </div>
-</div>
-
-    </section>
-
-    <section class="py-20 bg-indigo-900 text-white relative">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">The "Day 1 to Done" Roadmap</h2>
-                <p class="text-gray-400 mt-4">We tell you exactly what to do every single day until the exam.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
-                    <div class="text-2xl font-bold text-indigo-300 mb-2">1. Prioritize</div>
-                    <p class="text-gray-300 text-sm">We highlight high-weightage chapters you must not skip.</p>
-                </div>
-                <div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
-                    <div class="text-2xl font-bold text-indigo-300 mb-2">2. Practice</div>
-                    <p class="text-gray-300 text-sm">Solve our predicted question bank based on latest trends.</p>
-                </div>
-                <div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
-                    <div class="text-2xl font-bold text-indigo-300 mb-2">3. Revise</div>
-                    <p class="text-gray-300 text-sm">Use the formula sheets to lock concepts in your memory.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Real Stories. Real Results.</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-                    <div class="relative group cursor-pointer">
-                        <img src="https://placehold.co/600x350/black/white?text=Video+Thumbnail" class="w-full">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
-                            <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4"><h4 class="font-bold">"From 40 marks to 180 in 2 months"</h4><p class="text-sm text-gray-500">Rohan, IIT Madras</p></div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-                    <div class="relative group cursor-pointer">
-                        <img src="https://placehold.co/600x350/black/white?text=Video+Thumbnail" class="w-full">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
-                            <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4"><h4 class="font-bold">"The roadmap saved my drop year"</h4><p class="text-sm text-gray-500">Anjali, NIT Trichy</p></div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-                    <div class="relative group cursor-pointer">
-                        <img src="https://placehold.co/600x350/black/white?text=Video+Thumbnail" class="w-full">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition">
-                            <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4"><h4 class="font-bold">"Best predicted questions for 2025"</h4><p class="text-sm text-gray-500">Vikram, IIT Roorkee</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-
-    <section class="py-16 bg-red-50 border-y border-red-100">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-red-900 mb-8 uppercase tracking-wide">What this is NOT:</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="flex gap-3 items-start text-sm">
-                    <i class="fa-solid fa-circle-minus text-red-400 mt-1"></i>
-                    <p class="text-gray-700"><strong>NOT a Magic Shortcut:</strong> This is a roadmap for hard workers, not a "cheat code" to avoid studying.</p>
-                </div>
-                <div class="flex gap-3 items-start text-sm">
-                    <i class="fa-solid fa-circle-minus text-red-400 mt-1"></i>
-                    <p class="text-gray-700"><strong>NOT a Textbook Substitute:</strong> This layer optimizes your existing coaching/books for 10x better output.</p>
-                </div>
-            </div>
-        </div>
-        <div class="mt-10 pt-6 border-t border-red-200 text-center">
-    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">
-        Strategically Built For
-    </p>
-    <div class="flex flex-wrap justify-center gap-3">
-        <span class="bg-indigo-50 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold border border-indigo-100">
-            Class 11 (Foundation)
-        </span>
-        <span class="bg-indigo-50 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold border border-indigo-100">
-            Class 12 (Revision)
-        </span>
-        <span class="bg-indigo-50 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold border border-indigo-100">
-            Long term studens
-        </span>
-    </div>
-</div>
-
-    </section>
-
-   
-
-    <section id="parents" class="py-20 bg-amber-50 border-y border-amber-100 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 relative">
-
-    <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">
-      What Parents Say
-    </h2>
-
-    <div class="relative overflow-hidden">
-
-      <!-- Slider -->
-      <div id="parentSlider"
-        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-
-        <!-- REVIEW 1 -->
-        <div class="w-full flex-shrink-0 snap-center px-4">
-          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-            
-            <!-- Left avatar -->
-            <div class="flex-shrink-0">
-              <img src="r1.png"
-                class="w-12 h-12 rounded-full object-cover bg-gray-200">
-            </div>
-
-            <!-- Content -->
-            <div>
-              <p class="text-gray-700 text-sm mb-3">
-                “We spent lakhs on coaching, but this program finally gave my son clear direction.”
-              </p>
-
-              <!-- Stars BELOW text -->
-              <div class="flex text-yellow-400 mb-2 text-sm">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-
-              <p class="text-xs font-semibold text-gray-900">
-                Mr. Sharma <span class="text-gray-500 font-normal">· Parent</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- REVIEW 2 -->
-        <div class="w-full flex-shrink-0 snap-center px-4">
-          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-            
-            <div class="flex-shrink-0">
-              <img src="r2.png"
-                class="w-12 h-12 rounded-full object-cover bg-gray-200">
-            </div>
-
-            <div>
-              <p class="text-gray-700 text-sm mb-3">
-                “The daily roadmap kept my daughter disciplined and reduced exam stress completely.”
-              </p>
-
-              <div class="flex text-yellow-400 mb-2 text-sm">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-
-              <p class="text-xs font-semibold text-gray-900">
-                Mrs. Iyer <span class="text-gray-500 font-normal">· Parent</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- REVIEW 3 -->
-        <div class="w-full flex-shrink-0 snap-center px-4">
-          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-            
-            <div class="flex-shrink-0">
-              <img src="r3.png"
-                class="w-12 h-12 rounded-full object-cover bg-gray-200">
-            </div>
-
-            <div>
-              <p class="text-gray-700 text-sm mb-3">
-                “Affordable, focused and far better than big coaching institutes.”
-              </p>
-
-              <div class="flex text-yellow-400 mb-2 text-sm">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-
-              <p class="text-xs font-semibold text-gray-900">
-                Mr. Verma <span class="text-gray-500 font-normal">· Parent</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Arrows -->
-      <button onclick="slideParent(-1)"
-        class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <button onclick="slideParent(1)"
-        class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-    </div>
-  </div>
-</section>
-
-
-
-    <section id="pricing" class="py-20 bg-slate-50 relative">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
-                <div class="bg-indigo-600 p-6 text-center">
-                    <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Exam Shield Bundle</h2>
-                    <p class="text-indigo-100 mt-2">Instant Digital Access via Email</p>
-                </div>
-                <div class="p-8 md:p-12">
-                    <div class="flex flex-col items-center mb-8">
-                        <span class="text-gray-400 text-lg line-through">Total Value: ₹5,000</span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-5xl font-extrabold text-gray-900">₹1,499</span>
-                            <span class="text-gray-500 font-bold text-xs">ONE-TIME</span>
-                        </div>
-                    </div>
-                    
-                    <label class="relative cursor-pointer block mb-8 group transform transition hover:scale-[1.01]">
-                        <div class="absolute -top-3 right-4 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 uppercase animate-pulse">MOST STUDENTS ADD THIS</div>
-                        <input type="checkbox" id="notes-addon" class="sr-only">
-                        <div class="p-5 rounded-xl border-2 border-dashed border-yellow-400 bg-yellow-50/50 hover:bg-yellow-50 transition-all">
-                            <div class="flex items-start gap-4">
-                                <div class="checkbox-square w-6 h-6 flex-shrink-0 rounded border-2 border-yellow-400 flex items-center justify-center bg-white transition-colors mt-1">
-                                    <i class="fa-solid fa-check text-white text-xs opacity-0 check-icon"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-center">
-                                        <h4 class="font-bold text-gray-900">Add Handwritten Topper Notes</h4>
-                                        <span class="text-yellow-700 bg-yellow-200 text-[10px] font-bold px-2 py-0.5 rounded">+₹299</span>
-                                    </div>
-                                    <p class="text-xs text-gray-700 mt-1 italic">300+ pages of high-yield summary notes. Skip the bulky textbooks.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </label>
-
-                    <button id="main-cta" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-5 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">Enroll Now</button>
-                    
-                    <div class="mt-6 flex justify-center items-center gap-6">
-    <span class="font-extrabold text-gray-500 text-lg tracking-tight opacity-70">Cashfree</span>
-    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Secure Cashfree Checkout • iiHub LLP</div>
-</div>
-                </div>
-                <p class="text-[9px] text-gray-400 mt-3 italic text-center leading-relaxed px-4">
-    This is a digital program with instant access. Refunds are not applicable once materials are delivered.
+<p class="hero-sub fade-up d2">
+  I lost my entire 11th grade figuring out what JEE even required. By the time I understood the roadmap, one full year was gone.<br><br>
+  I still cracked JEE — <strong>AIR 367, NIT Warangal.</strong><br>
+  Now we build that roadmap for you in one 1-on-1 session.<br>
+  <span style="color: var(--text-muted); font-size: 0.9rem;">So your child doesn't lose another year figuring it out alone.</span>
 </p>
 
-            </div>
-        </div>
-    </section>
+<div class="hero-cta-group fade-up d3">
+  <a href="#pricing" class="btn-primary">
+    Get My Personalized JEE Roadmap →
+  </a>
+  <span class="btn-subtext">₹5,000+ private mentorship → Just ₹1,499 today</span>
+</div>
 
-    <section class="py-12 bg-red-50 text-center border-y border-red-100">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-red-700 mb-2">⚠️ Offer Closing Soon</h2>
-            <p class="text-red-600 mb-6">Price increases to ₹2999 when the timer hits zero.</p>
-            <div id="countdown" class="flex justify-center gap-4 text-3xl font-mono font-bold text-red-800">
-                <div><span id="hours">23</span>h</div>:<div><span id="minutes">59</span>m</div>:<div><span id="seconds">59</span>s</div>
-            </div>
-        </div>
-    </section>
-    
-   <footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-gray-300 py-24 text-center">
+<div class="hero-trust fade-up d4">
+  <div class="trust-item">
+    <span class="icon green">🏆</span>
+    AIR 367 — JEE Ranker
+  </div>
+  <div class="trust-item">
+    <span class="icon blue">🎓</span>
+    NIT Warangal Graduate
+  </div>
+  <div class="trust-item">
+    <span class="icon gold">❤️</span>
+    10,000+ Mentored Since 2017
+  </div>
+</div>
 
-    <div class="max-w-3xl mx-auto px-4">
+<div class="fade-up d4" style="margin-top: 16px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+  <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; background: #FEF2F2; padding: 4px 12px; border-radius: 100px;">🔴 Live 1-on-1. Not recorded.</span>
+  <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; background: var(--blue-light); padding: 4px 12px; border-radius: 100px;">📞 Not a video course</span>
+</div>
+</div>
+</section>
 
-        <h2 class="text-4xl md:text-5xl font-serif font-semibold text-white mb-6">
-            Don’t Waste Another Day.
-        </h2>
+<div style="background: var(--bg-dark); padding: 20px 0;">
+<div class="container">
+<div style="display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; text-align: center;">
+<div>
+<div style="font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: -0.02em;">10,000+</div>
+<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Students Mentored</div>
+</div>
+<div style="width: 1px; background: #333; align-self: stretch;"></div>
+<div>
+<div style="font-size: 1.6rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em;">AIR 367</div>
+<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Founder's JEE Rank</div>
+</div>
+<div style="width: 1px; background: #333; align-self: stretch;"></div>
+<div>
+<div style="font-size: 1.6rem; font-weight: 800; color: #4ADE80; letter-spacing: -0.02em;">Since 2017</div>
+<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Trusted for 9 Years</div>
+</div>
+</div>
+<p style="text-align: center; font-size: 0.72rem; color: #777; margin-top: 12px; font-weight: 500;">Hyderabad offline batches + Online 1-on-1 mentorships since 2017</p>
+</div>
+</div>
 
-        <p class="text-lg text-gray-400 mb-10">
-            Start revising efficiently with notes that have helped thousands of JEE aspirants
-            improve accuracy and rank.
-        </p>
+<section class="pain-section">
+<div class="container">
+<div class="section-label" style="text-align:center;">Be honest with yourself</div>
+<h2 class="section-title" style="text-align:center;">Does This Sound Like You?</h2>
+<p class="section-subtitle" style="text-align:center; max-width:500px; margin-left:auto; margin-right:auto;">
+If even one of these feels familiar, keep reading.
+</p>
 
-        <a href="#pricing"
-           class="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg px-12 py-5 rounded-full shadow-xl transition">
-            Get Instant Access
-        </a>
+<div class="pain-card">
+  <div class="pain-icon">😰</div>
+  <p>You study <strong>6-8 hours daily</strong>, but your mock test scores have been stuck at the same level for weeks. More effort isn't translating into more marks.</p>
+</div>
 
-        <p class="text-sm text-gray-500 mt-6">
-            If your access link ever fails, we resend it instantly — guaranteed.
-        </p>
+<div class="pain-card">
+  <div class="pain-icon">📚</div>
+  <p>You have <strong>50 saved PDFs, 20 YouTube playlists, and 10 books</strong> — but you still don't know what to open tomorrow morning.</p>
+</div>
 
-        <div class="mt-20">
-            <p class="text-2xl font-semibold text-white tracking-wide">
-                 support@iitjeenote.in
-            </p>
+<div class="pain-card">
+  <div class="pain-icon">🏫</div>
+  <p>Your coaching handles <strong>100+ students</strong> in one batch. Nobody has time to build a plan that fits YOUR strengths and weaknesses.</p>
+</div>
 
-            <p class="text-sm text-gray-500 mt-2">
-                Managed by <span class="text-gray-300 font-medium">iiHub LLP</span>
-            </p>
+<div class="pain-card">
+  <div class="pain-icon">😶</div>
+  <p>You revise the same chapters again and again, but <strong>exam questions still feel unfamiliar</strong> — like you're studying the wrong things.</p>
+</div>
 
-            <p class="text-sm text-gray-500 mt-4">
-                Website:https://iituitions.com/mentorship &nbsp;|&nbsp; Email:  support@iitjeenote.in
-            </p>
+<div class="pain-card">
+  <div class="pain-icon">⏰</div>
+  <p>Every day, the <strong>exam gets closer</strong>. And every day, the anxiety grows — because you don't have a clear plan from here to exam day.</p>
+</div>
 
-            <div class="flex justify-center gap-6 mt-6 text-sm text-gray-400">
-                <a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
-                <a href="terms-and-conditions.html" class="hover:text-white">Terms & Conditions</a>
-                <a href="refund-policy.html" class="hover:text-white">Refund Policy</a>
-            </div>
+<div class="pain-closing">
+  The frustrating part?<br>
+  <strong>The problem isn't your effort. It's that nobody gave you YOUR roadmap.</strong>
+</div>
+</div>
+</section>
+
+<section class="story-section">
+<div class="container">
+<div class="section-label" style="text-align:center;">The Real Story Behind This Mentorship</div>
+<h2 class="section-title" style="text-align:center;">I Know Exactly How You Feel.
 
 
-            <p class="text-xs text-gray-600 mt-10">
-                © 2026 iiHub LLP. All rights reserved.
-            </p>
-        </div>
+Because I Was You.</h2>
+<div style="height: 28px;"></div>
 
+<div class="story-box">
+  <div class="story-header">
+    <div class="story-avatar">SK</div>
+    <div class="story-meta">
+      <h3>Sharath K</h3>
+      <p>Founder, IITutions (Since 2017)</p>
+      <span class="story-credential">🏆 AIR 367 — NIT Warangal</span>
     </div>
+  </div>
+  
+  <div class="story-content">
+    <p>After 10th grade, I was just a kid from a regular school. <span class="emphasis">No foundation classes. No coaching background. No head start.</span></p>
+    
+    <p>When I walked into my first IIT coaching class in 11th grade, everyone else seemed to already know the game. I didn't even fully understand what JEE really was.</p>
+    
+    <div class="story-callout">
+      I spent my entire 11th grade just trying to figure out the basics — what to study, what to skip, what actually matters for the exam. By the time I understood the race I was running, <strong>the most valuable year of my preparation was already over.</strong>
+    </div>
+    
+    <p>12th grade hit like a truck. I had <span class="emphasis">11th grade backlogs. An entirely new syllabus. And a coaching that treated 100 students exactly the same way</span> — no one had time to give ME a plan that fit MY strengths and weaknesses.</p>
+    
+    <p>The teachers were good. The coaching was decent. But the system was designed for everyone. Not for me.</p>
+    
+    <p class="emotional">"So I sat down and built my own roadmap. Topic by topic. Day by day. Alone."</p>
+    
+    <div class="story-result">
+      <strong>I cracked JEE. I got into NIT Warangal — All India Rank 367.</strong><br><br>
+      But it cost me double the stress, double the effort, and countless sleepless nights that I didn't need to go through — if only someone had given me a clear, personalized plan from day one.
+    </div>
+    
+    <p>That year of confusion — of studying hard but in the wrong direction — I don't want any student to go through that. <span class="emphasis">Not when the solution is so simple: someone who has cracked the exam, sitting with you for 30 minutes, and building YOUR specific roadmap.</span></p>
+    
+    <div class="story-mission">
+      <p>"I built this mentorship so that no student wastes a single day studying in the dark. Your roadmap should exist before you open your first book tomorrow."</p>
+      <p class="attribution">— Sharath K, AIR 367 | NIT Warangal | Founder, IITutions</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
 
+<div style="background: var(--accent); padding: 28px 0; text-align: center;">
+<div class="container">
+<p style="color: rgba(255,255,255,0.9); font-size: 0.92rem; font-weight: 600; margin-bottom: 14px; line-height: 1.5;">
+Ready to get YOUR roadmap? Don't wait until the last week.
+</p>
+<a href="#pricing" style="display: inline-block; background: white; color: var(--accent); padding: 14px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+Book My 1-on-1 Strategy Session → ₹1,499
+</a>
+<p style="color: rgba(255,255,255,0.7); font-size: 0.72rem; font-weight: 500; margin-top: 10px;">
+Instant access to materials + Live session within 24 hours
+</p>
+</div>
+</div>
+
+<section class="solution-section">
+<div class="container">
+<div class="section-label" style="text-align:center;">Your Transformation Starts Here</div>
+<h2 class="section-title" style="text-align:center;">Here's Exactly What Happens
+
+
+After You Enroll</h2>
+<p class="section-subtitle" style="text-align:center; max-width: 480px; margin-left:auto; margin-right:auto;">
+No guesswork. No generic advice. A clear, personalized plan in 3 steps.
+</p>
+
+<div class="step-card">
+  <div class="step-num">1</div>
+  <div class="step-content">
+    <span class="step-timing">Within 24 hours of enrollment</span>
+    <h3>Your 1-on-1 Strategy Call is Booked</h3>
+    <p>You'll be matched with a senior IIT/NIT faculty member. They'll call you at your preferred time — no group calls, no recordings. Just you and your mentor, one-on-one.</p>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">2</div>
+  <div class="step-content">
+    <span class="step-timing">During the 30-45 min session</span>
+    <h3>Your Strengths, Weaknesses & Gaps Are Identified</h3>
+    <p>Your mentor assesses exactly where you stand — which subjects are strong, which chapters have gaps, how much time you realistically have. They identify the specific topics that will give YOU the maximum marks in the minimum time.</p>
+  </div>
+</div>
+
+<div class="step-card">
+  <div class="step-num">3</div>
+  <div class="step-content">
+    <span class="step-timing">By end of session</span>
+    <h3>You Walk Away With YOUR Day-by-Day Roadmap</h3>
+    <p>A precise, personalized plan from today until exam day — what to study, what to skip, which chapters to prioritize, and exactly what to do in the next 7 days to build immediate momentum. No more confusion. Just execute.</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="toolkit-section">
+<div class="container">
+<div class="section-label" style="text-align:center;">Included With Your Session</div>
+<h2 class="section-title" style="text-align:center;">The IITutions Strategy Toolkit</h2>
+<p class="section-subtitle" style="text-align:center; max-width: 460px; margin-left:auto; margin-right:auto;">
+Along with your personalized roadmap, you get instant access to these battle-tested resources.
+</p>
+
+<div class="toolkit-grid">
+  <div class="toolkit-item">
+    <div class="toolkit-icon red">📋</div>
+    <div>
+      <span class="toolkit-badge">Core Resource</span>
+      <h4>Your Custom Roadmap PDF</h4>
+      <p>The exact day-by-day plan your mentor builds specifically for you during the session. Your personal battle plan for JEE.</p>
+    </div>
+  </div>
+  
+  <div class="toolkit-item">
+    <div class="toolkit-icon blue">📘</div>
+    <div>
+      <span class="toolkit-badge">Included Free</span>
+      <h4>Chapter-Wise High-Yield Question Bank</h4>
+      <p>Filtered, important questions for every chapter across Physics, Chemistry & Maths. Focus only on what actually appears in exams.</p>
+    </div>
+  </div>
+  
+  <div class="toolkit-item">
+    <div class="toolkit-icon gold">🎯</div>
+    <div>
+      <span class="toolkit-badge">Included Free</span>
+      <h4>Top 100 Predicted Questions — JEE 2026</h4>
+      <p>The highest-probability questions based on NTA's latest pattern analysis. Students who used these in 2025 found close matches in the actual paper.</p>
+    </div>
+  </div>
+  
+  <div class="toolkit-item">
+    <div class="toolkit-icon green">⚠️</div>
+    <div>
+      <span class="toolkit-badge">Included Free</span>
+      <h4>Common Errors & Mistake Prevention Guide</h4>
+      <p>The silly mistakes that cost 15-30 marks in every exam. Identify them before exam day so you don't lose marks you already deserve.</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="audience-section">
+<div class="container">
+<div class="section-label" style="text-align:center;">Built For Every Stage</div>
+<h2 class="section-title" style="text-align:center;">This Mentorship Is For You If…</h2>
+<div style="height: 28px;"></div>
+
+<div class="audience-grid">
+  <div class="audience-card">
+    <span class="emoji">🌱</span>
+    <h4>Just Entered 11th Grade</h4>
+    <p>You want a strong foundation plan so you don't waste your most important year the way most students do.</p>
+  </div>
+  <div class="audience-card">
+    <span class="emoji">⚡</span>
+    <h4>In 12th With Backlogs</h4>
+    <p>11th topics are unclear, 12th is piling up, and you need a recovery roadmap — fast.</p>
+  </div>
+  <div class="audience-card">
+    <span class="emoji">🔄</span>
+    <h4>Dropper / Long-Term Student</h4>
+    <p>This is your second chance. You need a focused plan that doesn't repeat the mistakes of last year.</p>
+  </div>
+  <div class="audience-card">
+    <span class="emoji">🚨</span>
+    <h4>JEE Is Weeks Away</h4>
+    <p>No time for trial and error. You need an emergency strategy — which chapters to hit, which to skip, and how to maximize marks NOW.</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="results" class="py-20 bg-white overflow-hidden relative">
+<div class="max-w-6xl mx-auto px-4 relative">
+<h2 class="text-3xl font-bold text-center mb-12">Transformations</h2>
+<div class="relative overflow-hidden">
+<div id="hofSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+<img src="stu1.png" class="w-full h-64 object-cover">
+<div class="p-6">
+<div class="flex text-indigo-500 mb-2">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<h3 class="text-lg font-bold">Dr K B Nikshiptha</h3>
+<p class="text-sm text-gray-500 mb-3">Student in KMC warangal IIT Rank 2252</p>
+<p class="text-gray-600 italic text-sm">Regular preparation didn’t get me into a good medical college. A 30-minute assessment changed my strategy and helped me reach my dream college.</p>
+</div>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+<img src="st2.png" class="w-full h-64 object-cover">
+<div class="p-6">
+<div class="flex text-indigo-500 mb-2">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<h3 class="text-lg font-bold">Stains koduri</h3>
+<p class="text-sm text-gray-500 mb-3"> NITW 2512</p>
+<p class="text-gray-600 italic text-sm">My teachers are very good and i did my inter from a good college. Everything is fine but a small clarity is missing, why im not able to score best in my week tests and grand teats then i had a small assessment and it really helped me alot to boost my rank</p>
+</div>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+<img src="stu3.png" class="w-full h-64 object-cover">
+<div class="p-6">
+<div class="flex text-indigo-500 mb-2">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<h3 class="text-lg font-bold">tummala baladitya</h3>
+<p class="text-sm text-gray-500 mb-3">NITW 1517</p>
+<p class="text-gray-600 italic text-sm">"The predicted questions matched the actual exam pattern closely."</p>
+</div>
+</div>
+</div>
+</div>
+<button onclick="slideHOF(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-left"></i>
+</button>
+<button onclick="slideHOF(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+</div>
+</div>
+</section>
+
+<section class="py-16 px-4 bg-gray-50">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-serif text-3xl font-bold text-center mb-4">Unfiltered Feedback</h2>
+<p class="text-center text-gray-500 mb-10">Real conversations. No edits.</p>
+<div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar">
+<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
+<img src="w1.png" alt="WhatsApp Review 1" class="w-full h-auto">
+</div>
+<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
+<img src="w2.png" alt="WhatsApp Review 2" class="w-full h-auto">
+</div>
+<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
+<img src="w3.png" alt="WhatsApp Review 3" class="w-full h-auto">
+</div>
+<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300">
+<img src="w4.png" alt="WhatsApp Review 3" class="w-full h-auto">
+</div>
+</div>
+<div class="text-center mt-8">
+<p class="text-sm font-semibold text-green-600 flex items-center justify-center gap-2">
+<i class="fa-brands fa-whatsapp text-xl"></i> Verified WhatsApp Chats
+</p>
+</div>
+</div>
+</section>
+
+<section id="mentors" class="py-20 bg-white">
+<div class="max-w-6xl mx-auto px-4 relative">
+<div class="text-center mb-12">
+<span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">The Masterminds</span>
+<h2 class="text-3xl font-bold text-gray-900 mt-2">Guided by Seasoned Minds</h2>
+</div>
+<div class="relative overflow-hidden">
+<div id="mentorSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
+<img src="t1.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
+<h3 class="text-xl font-bold">Sharath.k</h3>
+<p class="text-indigo-600 text-sm mb-4">Sr Physics lecturer, Mentor and jee strategist.| 10 years in teaching and 7 years in mentoring. </p>
+<p class="text-gray-600 italic text-sm">"In the journey to the IITs, hard work is the engine, but strategy is the steering wheel. Without a map, even the fastest car gets lost"</p>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
+<img src="t2.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
+<h3 class="text-xl font-bold">Prudhvi</h3>
+<p class="text-indigo-600 text-sm mb-4">Physics Pedagogy Expert</p>
+<p class="text-gray-600 italic text-sm">"Recall any formula in under 30 seconds during pressure."</p>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
+<img src="https://placehold.co/150x150/green/white?text=Neha+Ma'am" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
+<h3 class="text-xl font-bold">Neha Gupta</h3>
+<p class="text-indigo-600 text-sm mb-4">NIT Graduate | Maths Expert</p>
+<p class="text-gray-600 italic text-sm">"Solve the right 20 questions. That’s the rank booster."</p>
+</div>
+</div>
+</div>
+<button onclick="slideMentor(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-left"></i>
+</button>
+<button onclick="slideMentor(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-indigo-900 text-white relative">
+<div class="max-w-5xl mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-white">The "Day 1 to Done" Roadmap</h2>
+<p class="text-gray-400 mt-4">We tell you exactly what to do every single day until the exam.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8 text-center">
+<div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
+<div class="text-2xl font-bold text-indigo-300 mb-2">1. Prioritize</div>
+<p class="text-gray-300 text-sm">We highlight high-weightage chapters you must not skip.</p>
+</div>
+<div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
+<div class="text-2xl font-bold text-indigo-300 mb-2">2. Practice</div>
+<p class="text-gray-300 text-sm">Solve our predicted question bank based on latest trends.</p>
+</div>
+<div class="bg-indigo-800/50 p-6 rounded-xl border border-indigo-700">
+<div class="text-2xl font-bold text-indigo-300 mb-2">3. Revise</div>
+<p class="text-gray-300 text-sm">Use the formula sheets to lock concepts in your memory.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="parents" class="py-20 bg-amber-50 border-y border-amber-100 overflow-hidden">
+<div class="max-w-6xl mx-auto px-4 relative">
+<h2 class="text-3xl font-bold text-center mb-12 text-amber-900">What Parents Say</h2>
+<div class="relative overflow-hidden">
+<div id="parentSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+<div class="flex-shrink-0">
+<img src="r1.png" class="w-12 h-12 rounded-full object-cover bg-gray-200">
+</div>
+<div>
+<p class="text-gray-700 text-sm mb-3">“We spent lakhs on coaching, but this program finally gave my son clear direction.”</p>
+<div class="flex text-yellow-400 mb-2 text-sm">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-xs font-semibold text-gray-900">Mr. Sharma <span class="text-gray-500 font-normal">· Parent</span></p>
+</div>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+<div class="flex-shrink-0">
+<img src="r2.png" class="w-12 h-12 rounded-full object-cover bg-gray-200">
+</div>
+<div>
+<p class="text-gray-700 text-sm mb-3">“The daily roadmap kept my daughter disciplined and reduced exam stress completely.”</p>
+<div class="flex text-yellow-400 mb-2 text-sm">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-xs font-semibold text-gray-900">Mrs. Iyer <span class="text-gray-500 font-normal">· Parent</span></p>
+</div>
+</div>
+</div>
+<div class="w-full flex-shrink-0 snap-center px-4">
+<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+<div class="flex-shrink-0">
+<img src="r3.png" class="w-12 h-12 rounded-full object-cover bg-gray-200">
+</div>
+<div>
+<p class="text-gray-700 text-sm mb-3">“Affordable, focused and far better than big coaching institutes.”</p>
+<div class="flex text-yellow-400 mb-2 text-sm">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-xs font-semibold text-gray-900">Mr. Verma <span class="text-gray-500 font-normal">· Parent</span></p>
+</div>
+</div>
+</div>
+</div>
+<button onclick="slideParent(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-left"></i>
+</button>
+<button onclick="slideParent(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
+<i class="fa-solid fa-chevron-right"></i>
+</button>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="py-20 bg-slate-50 relative">
+<div class="max-w-3xl mx-auto px-4">
+<div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
+<div class="bg-indigo-600 p-6 text-center">
+<h2 class="text-2xl font-bold text-white uppercase tracking-wider">Exam Shield Bundle</h2>
+<p class="text-indigo-100 mt-2">Instant Digital Access via Email</p>
+</div>
+<div class="p-8 md:p-12">
+<div class="flex flex-col items-center mb-8">
+<span class="text-gray-400 text-lg line-through">Total Value: ₹5,000</span>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-extrabold text-gray-900">₹1,499</span>
+<span class="text-gray-500 font-bold text-xs">ONE-TIME</span>
+</div>
+</div>
+
+            <label class="relative cursor-pointer block mb-8 group transform transition hover:scale-[1.01]">
+                <div class="absolute -top-3 right-4 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 uppercase animate-pulse">MOST STUDENTS ADD THIS</div>
+                <input type="checkbox" id="notes-addon" class="sr-only">
+                <div class="p-5 rounded-xl border-2 border-dashed border-yellow-400 bg-yellow-50/50 hover:bg-yellow-50 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="checkbox-square w-6 h-6 flex-shrink-0 rounded border-2 border-yellow-400 flex items-center justify-center bg-white transition-colors mt-1">
+                            <i class="fa-solid fa-check text-white text-xs opacity-0 check-icon"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-gray-900">Add Handwritten Topper Notes</h4>
+                                <span class="text-yellow-700 bg-yellow-200 text-[10px] font-bold px-2 py-0.5 rounded">+₹299</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-1 italic">300+ pages of high-yield summary notes. Skip the bulky textbooks.</p>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <button id="main-cta" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-5 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">Enroll Now</button>
+            
+            <div class="mt-6 flex justify-center items-center gap-6">
+                <span class="font-extrabold text-gray-500 text-lg tracking-tight opacity-70">Cashfree</span>
+                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Secure Cashfree Checkout • iiHub LLP</div>
+            </div>
+        </div>
+        <p class="text-[9px] text-gray-400 mt-3 italic text-center leading-relaxed px-4">
+            This is a digital program with instant access. Refunds are not applicable once materials are delivered.
+        </p>
+    </div>
+</div>
+</section>
+
+<section class="py-12 bg-red-50 text-center border-y border-red-100">
+<div class="max-w-4xl mx-auto px-4">
+<h2 class="text-2xl font-bold text-red-700 mb-2">⚠️ Offer Closing Soon</h2>
+<p class="text-red-600 mb-6">Price increases to ₹2999 when the timer hits zero.</p>
+<div id="countdown" class="flex justify-center gap-4 text-3xl font-mono font-bold text-red-800">
+<div><span id="hours">23</span>h</div>:<div><span id="minutes">59</span>m</div>:<div><span id="seconds">59</span>s</div>
+</div>
+</div>
+</section>
+
+<footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-gray-300 py-24 text-center">
+<div class="max-w-3xl mx-auto px-4">
+<h2 class="text-4xl md:text-5xl font-serif font-semibold text-white mb-6">Don’t Waste Another Day.</h2>
+<p class="text-lg text-gray-400 mb-10">Start revising efficiently with notes that have helped thousands of JEE aspirants improve accuracy and rank.</p>
+<a href="#pricing" class="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg px-12 py-5 rounded-full shadow-xl transition">Get Instant Access</a>
+<p class="text-sm text-gray-500 mt-6">If your access link ever fails, we resend it instantly — guaranteed.</p>
+<div class="mt-20">
+<p class="text-2xl font-semibold text-white tracking-wide">support@iitjeenote.in</p>
+<p class="text-sm text-gray-500 mt-2">Managed by <span class="text-gray-300 font-medium">iiHub LLP</span></p>
+<p class="text-sm text-gray-500 mt-4">Website:https://iituitions.com/mentorship &nbsp;|&nbsp; Email:  support@iitjeenote.in</p>
+<div class="flex justify-center gap-6 mt-6 text-sm text-gray-400">
+<a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+<a href="terms-and-conditions.html" class="hover:text-white">Terms & Conditions</a>
+<a href="refund-policy.html" class="hover:text-white">Refund Policy</a>
+</div>
+<p class="text-xs text-gray-600 mt-10">© 2026 iiHub LLP. All rights reserved.</p>
+</div>
+</div>
 </footer>
 
+<div id="sticky-bar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-40 md:hidden sticky-cta shadow-2xl">
+<div class="flex justify-between items-center gap-4">
+<div class="flex flex-col">
+<span class="text-xs text-gray-400 line-through">₹5000</span>
+<span id="sticky-price" class="text-lg font-bold text-gray-900">₹1499</span>
+</div>
+<a id="sticky-cta" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md cursor-pointer">Enroll Now</a>
+</div>
+</div>
 
-    <div id="sticky-bar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-40 md:hidden sticky-cta shadow-2xl">
-        <div class="flex justify-between items-center gap-4">
-            <div class="flex flex-col">
-                <span class="text-xs text-gray-400 line-through">₹5000</span>
-                <span id="sticky-price" class="text-lg font-bold text-gray-900">₹1499</span>
-            </div>
-            <a id="sticky-cta" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md cursor-pointer">
-Enroll Now
-</a>
-        </div>
-    </div>
+<script>
+const DEADLINE = new Date("Feb 22, 2026 23:59:59 GMT+0530").getTime();
+const OFFER_PRICE = 1499;
+const FINAL_PRICE = 2999;
+const ADDON_PRICE = 299;
 
-   
+const elements = {
+checkbox: document.getElementById('notes-addon'),
+mainBtn: document.getElementById('main-cta'),
+stickyPrice: document.getElementById('sticky-price'),
+pricingSection: document.querySelector('#pricing .text-5xl'),
+timer: {
+h: document.getElementById('hours'),
+m: document.getElementById('minutes'),
+s: document.getElementById('seconds')
+}
+};
 
+function updateDisplay() {
+const now = new Date().getTime();
+const isExpired = now >= DEADLINE;
+const currentBase = isExpired ? FINAL_PRICE : OFFER_PRICE;
+const total = elements.checkbox.checked ? currentBase + ADDON_PRICE : currentBase;
 
-    <script>
-    // Configuration
-    const DEADLINE = new Date("Feb 20, 2026 23:59:59 GMT+0530").getTime();
-    const OFFER_PRICE = 1499;
-    const FINAL_PRICE = 2999;
-    const ADDON_PRICE = 299;
-
-    // Elements
-    const elements = {
-        checkbox: document.getElementById('notes-addon'),
-        mainBtn: document.getElementById('main-cta'),
-        stickyPrice: document.getElementById('sticky-price'),
-        pricingSection: document.querySelector('#pricing .text-5xl'),
-        heroBtn: document.querySelector('a[href="#pricing"].bg-indigo-600'),
-        timer: {
-            h: document.getElementById('hours'),
-            m: document.getElementById('minutes'),
-            s: document.getElementById('seconds')
-        }
-    };
-
-    function updateDisplay() {
-        const now = new Date().getTime();
-        const isExpired = now >= DEADLINE;
-        
-        // 1. Calculate Prices
-        const currentBase = isExpired ? FINAL_PRICE : OFFER_PRICE;
-        const total = elements.checkbox.checked ? currentBase + ADDON_PRICE : currentBase;
-
-        // 2. Update Text & UI
-        // 2. Update Text & UI
-        // 2. Update Text & UI
-        if (elements.checkbox.checked) {
-            elements.mainBtn.textContent = `Unlock 1-on-1 Strategy + Handwritten Notes @ ₹${total}`;
-        } else {
-            elements.mainBtn.textContent = `Unlock 1-on-1 JEE Strategy @ ₹${total}`;
-        }
-        
-        elements.stickyPrice.textContent = `₹${total}`;
-        
-        // Update the static pricing section text
-        if (elements.pricingSection) elements.pricingSection.textContent = `₹${currentBase}`;
-        
-        // Update Hero Button
-        if (elements.heroBtn && !isExpired) {
-             elements.heroBtn.textContent = `Enroll now ₹${OFFER_PRICE}`;
-        } else if (elements.heroBtn) {
-             elements.heroBtn.textContent = `Enroll now @ ₹${FINAL_PRICE}`;
-        }
-
-        // 3. Handle Expiration Logic
-        if (isExpired) {
-            elements.timer.h.textContent = "00";
-            elements.timer.m.textContent = "00";
-            elements.timer.s.textContent = "00";
-            
-            // Disable offer-specific UI
-            const banner = document.querySelector('.animate-pulse');
-            if (banner) banner.textContent = "⚠️ Final Batch Enrolling Now";
-            return true;
-        }
-
-        // 4. Update Countdown Numbers
-        const diff = DEADLINE - now;
-        const h = Math.floor(diff / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        elements.timer.h.textContent = String(h).padStart(2, '0');
-        elements.timer.m.textContent = String(m).padStart(2, '0');
-        elements.timer.s.textContent = String(s).padStart(2, '0');
-        
-        return false;
-    }
-
-    // Initialize
-    function init() {
-        // Sticky Bar Observer
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const bar = document.getElementById('sticky-bar');
-                entry.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
-            });
-        }, { threshold: 0 });
-        observer.observe(document.querySelector('section'));
-
-        // Price Toggle Listener
-        elements.checkbox.addEventListener('change', updateDisplay);
-        // MAIN CTA CLICK REDIRECT
-elements.mainBtn.addEventListener('click', function () {
-    if (elements.checkbox.checked) {
-        window.location.href = "https://payments.cashfree.com/forms/jee-premium-1698";
-    } else {
-        window.location.href = "https://payments.cashfree.com/forms/jee-strategy-1499";
-    }
-});
-
-        // STICKY CTA CLICK REDIRECT
-const stickyBtn = document.getElementById("sticky-cta");
-
-if (stickyBtn) {
-    stickyBtn.addEventListener("click", function () {
-        if (elements.checkbox.checked) {
-            window.location.href = "https://payments.cashfree.com/forms/jee-premium-1698";
-        } else {
-            window.location.href = "https://payments.cashfree.com/forms/jee-strategy-1499";
-        }
-    });
+if (elements.checkbox.checked) {
+    elements.mainBtn.textContent = `Unlock 1-on-1 Strategy + Handwritten Notes @ ₹${total}`;
+} else {
+    elements.mainBtn.textContent = `Unlock 1-on-1 JEE Strategy @ ₹${total}`;
 }
 
-        // Start Clock
-        updateDisplay();
-        const clockInterval = setInterval(() => {
-            if (updateDisplay()) clearInterval(clockInterval);
-        }, 1000);
-    }
+if (elements.stickyPrice) elements.stickyPrice.textContent = `₹${total}`;
+if (elements.pricingSection) elements.pricingSection.textContent = `₹${currentBase}`;
 
-    // Slider Functions
-    function slideHOF(direction) {
-        const s = document.getElementById('hofSlider');
-        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
-    }
-    
-    function slideMentor(direction) {
-        const s = document.getElementById('mentorSlider');
-        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
-    }
+if (isExpired) {
+    elements.timer.h.textContent = &quot;00&quot;;
+    elements.timer.m.textContent = &quot;00&quot;;
+    elements.timer.s.textContent = &quot;00&quot;;
+    return true;
+}
 
-    function slideParent(direction) {
-        const s = document.getElementById('parentSlider');
-        s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
-    }
+const diff = DEADLINE - now;
+const h = Math.floor(diff / (1000 * 60 * 60));
+const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-    window.onload = init;
+elements.timer.h.textContent = String(h).padStart(2, &#39;0&#39;);
+elements.timer.m.textContent = String(m).padStart(2, &#39;0&#39;);
+elements.timer.s.textContent = String(s).padStart(2, &#39;0&#39;);
+
+return false;
+}
+
+function updateJeeCountdown() {
+const jeeDate = new Date('2026-04-05T09:00:00+05:30');
+const now = new Date();
+const diff = Math.ceil((jeeDate - now) / (1000 * 60 * 60 * 24));
+const el = document.getElementById('daysLeft');
+if (el && diff > 0) el.textContent = diff;
+}
+
+function init() {
+updateJeeCountdown();
+const stickyObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+const bar = document.getElementById('sticky-bar');
+entry.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
+});
+}, { threshold: 0 });
+stickyObserver.observe(document.querySelector('section'));
+
+elements.checkbox.addEventListener(&#39;change&#39;, updateDisplay);
+
+const paymentAction = function () {
+    if (elements.checkbox.checked) {
+        window.location.href = &quot;[https://payments.cashfree.com/forms/jee-premium-1698](https://payments.cashfree.com/forms/jee-premium-1698)&quot;;
+    } else {
+        window.location.href = &quot;[https://payments.cashfree.com/forms/jee-strategy-1499](https://payments.cashfree.com/forms/jee-strategy-1499)&quot;;
+    }
+};
+
+elements.mainBtn.addEventListener(&#39;click&#39;, paymentAction);
+const stickyBtn = document.getElementById(&quot;sticky-cta&quot;);
+if (stickyBtn) stickyBtn.addEventListener(&quot;click&quot;, paymentAction);
+
+updateDisplay();
+setInterval(updateDisplay, 1000);
+}
+
+function slideHOF(direction) {
+const s = document.getElementById('hofSlider');
+s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+}
+function slideMentor(direction) {
+const s = document.getElementById('mentorSlider');
+s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+}
+function slideParent(direction) {
+const s = document.getElementById('parentSlider');
+s.scrollBy({ left: direction * s.clientWidth, behavior: 'smooth' });
+}
+
+window.onload = init;
 </script>
-<a href="https://wa.me/918639221271?text=Hi!%20I%20have%20a%20query%20about%20the%201-on-1%20JEE%20Mentorship." 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="fixed z-50 right-4 bottom-[90px] md:bottom-8 bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition-all transform hover:scale-110">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-            
 
-        
+<a href="https://wa.me/918639221271?text=Hi!%20I%20have%20a%20query%20about%20the%201-on-1%20JEE%20Mentorship."
+target="_blank"
+rel="noopener noreferrer"
+class="fixed z-50 right-4 bottom-[90px] md:bottom-8 bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition-all transform hover:scale-110">
+<i class="fa-brands fa-whatsapp text-3xl"></i>
+</a>
+
 </body>
 </html>
