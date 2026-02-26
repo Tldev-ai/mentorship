@@ -205,6 +205,10 @@
         cursor: pointer;
         letter-spacing: 0.01em;
     }
+  .highlight-accent {
+    color: var(--accent);
+    font-weight: 700;
+}
     .btn-primary:hover {
         background: var(--accent-dark);
         transform: translateY(-2px);
@@ -706,8 +710,8 @@ JEE Mains 2026 is <span class="countdown-num" id="daysLeft">--</span> days away 
     line-height: 1.6;
     margin-bottom: 16px;
 }
-.highlight-red {
-    color: #DC2626;
+  .highlight-red {
+    color: var(--accent);
     font-weight: 700;
 }
 .hero-clarity-line {
@@ -935,7 +939,9 @@ JEE Mains 2026 is <span class="countdown-num" id="daysLeft">--</span> days away 
 
         <p class="hero-description fade-up d2">
             In private one-to-one session, we build your child a 
-<span class="highlight-red">personalized 90-day JEE execution roadmap</span> — 
+<span class="highlight-accent">
+personalized 90-day JEE execution roadmap
+</span> — 
 based on their weak chapters, mock scores, and available study hours.
         </p>
 
