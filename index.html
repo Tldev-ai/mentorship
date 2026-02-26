@@ -1659,9 +1659,9 @@ const elements = {
 function updateDisplay() {
   const total = elements.checkbox.checked ? BASE_PRICE + ADDON_PRICE : BASE_PRICE;
   if (elements.checkbox.checked) {
-    elements.mainBtn.textContent = 'Unlock Strategy + Handwritten Notes @ ₹' + total;
+    elements.mainBtn.textContent = 'RoadMap + Handwritten Notes @ ₹' + total;
   } else {
-    elements.mainBtn.textContent = 'Unlock 1-on-1 JEE Strategy @ ₹' + total;
+    elements.mainBtn.textContent = 'Give my child a clear RoadMap @ ₹' + total;
   }
   if (elements.stickyPrice) elements.stickyPrice.textContent = '₹' + total;
 }
