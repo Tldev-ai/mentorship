@@ -1,25 +1,8 @@
 <!DOCTYPE html>
-<!--
-  ============================================================
-  IITUiTIONS MENTORSHIP — V4 OPTIMIZED
-  ============================================================
-  CHANGES FROM LIVE VERSION:
-  1. Title/meta fixed (was "Exam Sheild")
-  2. REMOVED "Day 1 to Done Roadmap" (duplicated 3-step solution)
-  3. REMOVED fake "Offer Closing Soon" countdown timer
-  4. RENAMED "Exam Shield Bundle" → "IITuitions Mentorship"
-  5. ADDED "What This Is NOT" section (objection handler)
-  6. ADDED FAQ section with accordion (7 questions)
-  7. ADDED before/after scores to Transformation cards
-  8. ADDED slot scarcity + Founder's Mission Pricing badge
-  9. FIXED footer (mentorship-focused, not notes-focused)
-  10. REMOVED placeholder Neha Gupta faculty card
-  11. Cleaned dead timer JS code
-  ============================================================
--->
 <html lang="en" class="scroll-smooth">
 <head>
-  <!-- Meta Pixel Code -->
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -33,40 +16,47 @@ fbq('init', '920914060303950');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=920914060303950&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
-  <!-- Google tag (gtag.js) -->
+src="https://www.facebook.com/tr?id=920914060303950&ev=PageView&noscript=1"/></noscript>
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSJ0Q8B365"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-TSJ0Q8B365');
 </script>
-<base href="https://mentorship-blue-gamma.vercel.app/">
+
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://www.iituitions.com/mentorship" />
+<link rel="icon" type="image/png" href="https://mentorship-blue-gamma.vercel.app/favicon.png">
+<link rel="shortcut icon" href="https://mentorship-blue-gamma.vercel.app/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="IITuitions 1-on-1 JEE Mentorship — personalized strategy session with IIT/NIT faculty. Get your day-by-day roadmap, predicted questions, and chapter-wise important questions. One-time ₹1,499.">
 <title>IITuitions Mentorship — Your Personalized JEE Strategy Session</title>
 
-<!-- OG Tags: Critical for Facebook ad link previews -->
 <meta property="og:title" content="Your Child Studies 8 Hours a Day. But Nobody Built a Plan for THEM.">
 <meta property="og:description" content="1-on-1 JEE strategy session with AIR 367 ranker. Personalized day-by-day roadmap + predicted questions + chapter-wise question bank. ₹1,499 one-time.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://iituitions.com/mentorship">
+<meta property="og:url" content="https://www.iituitions.com/mentorship">
+
 <meta property="og:image" content="https://mentorship-blue-gamma.vercel.app/og-image.png">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="IITuitions Mentorship — Personalized JEE Strategy Session">
 <meta name="twitter:description" content="1-on-1 session with AIR 367 ranker. Get YOUR day-by-day JEE roadmap. ₹1,499 one-time.">
+<meta name="twitter:image" content="https://mentorship-blue-gamma.vercel.app/og-image.png">
+
+<!-- FIX 14: noscript fallback so fade-up elements don't stay invisible -->
+<noscript><style>.fade-up{opacity:1!important;}</style></noscript>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -96,1624 +86,705 @@ src="https://www.facebook.com/tr?id=920914060303950&ev=PageView&noscript=1"
   --radius: 12px;
   --radius-lg: 20px;
 }
-    body {
-        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-        background: var(--bg);
-        color: var(--text-primary);
-        line-height: 1.7;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-        padding-bottom: 72px;
-    }
-
-    .container {
-        max-width: 740px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(250,250,248,0.92);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-        padding: 12px 0;
-    }
-    .navbar .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 960px;
-    }
-    .navbar-brand {
-        font-weight: 800;
-        font-size: 1.15rem;
-        color: var(--text-primary);
-        text-decoration: none;
-        letter-spacing: -0.02em;
-    }
-    .navbar-brand span { color: var(--accent); }
-    .navbar-cta {
-        background: var(--accent);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        text-decoration: none;
-        transition: all 0.2s;
-        letter-spacing: 0.01em;
-    }
-    .navbar-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
-
-    .urgency-bar {
-        margin-top: 56px;
-        background: var(--bg-dark);
-        color: white;
-        text-align: center;
-        padding: 10px 16px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-    }
-    .urgency-bar .countdown-num {
-        display: inline-block;
-        background: var(--accent);
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-weight: 800;
-        margin: 0 2px;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .hero {
-        padding: 56px 0 48px;
-        text-align: center;
-    }
-    .hero-eyebrow {
-        display: inline-block;
-        background: var(--green-light);
-        color: var(--green);
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 6px 16px;
-        border-radius: 100px;
-        margin-bottom: 28px;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-    }
-    .hero h1 {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: clamp(1.85rem, 5.5vw, 2.75rem);
-        line-height: 1.2;
-        color: var(--text-primary);
-        margin-bottom: 10px;
-        letter-spacing: -0.02em;
-        max-width: 650px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .hero h1 .highlight-line {
-        color: var(--accent);
-    }
-    .hero-sub {
-        font-size: 1.05rem;
-        color: var(--text-secondary);
-        margin-bottom: 32px;
-        line-height: 1.65;
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .hero-cta-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 36px;
-    }
-    .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--accent);
-        color: white;
-        padding: 16px 36px;
-        border-radius: 12px;
-        font-size: 1.02rem;
-        font-weight: 700;
-        text-decoration: none;
-        transition: all 0.25s;
-        box-shadow: 0 4px 20px var(--accent-glow);
-        border: none;
-        cursor: pointer;
-        letter-spacing: 0.01em;
-    }
-  .highlight-accent {
-    color: var(--accent);
-    font-weight: 700;
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: 72px;
 }
-    .btn-primary:hover {
-        background: var(--accent-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 28px var(--accent-glow);
-    }
-    .btn-subtext {
-        font-size: 0.78rem;
-        color: var(--text-muted);
-        font-weight: 500;
-    }
-    .hero-trust {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        flex-wrap: wrap;
-    }
-    .trust-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        font-weight: 600;
-    }
-    .trust-item .icon {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.65rem;
-    }
-    .trust-item .icon.green { background: var(--green-light); color: var(--green); }
-    .trust-item .icon.blue { background: var(--blue-light); color: var(--blue); }
-    .trust-item .icon.gold { background: var(--gold-light); color: var(--gold); }
+.container { max-width: 740px; margin: 0 auto; padding: 0 20px; }
+.navbar {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: rgba(250,250,248,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); padding: 12px 0;
+}
+.navbar .container { display: flex; justify-content: space-between; align-items: center; max-width: 960px; }
+.navbar-brand {
+  font-weight: 800; font-size: 1.15rem; color: var(--text-primary);
+  text-decoration: none; letter-spacing: -0.02em;
+}
+.navbar-brand span { color: var(--accent); }
+.navbar-cta {
+  background: var(--accent); color: white; padding: 8px 20px;
+  border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+  text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em;
+}
+.navbar-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.urgency-bar {
+  margin-top: 56px; background: var(--bg-dark); color: white;
+  text-align: center; padding: 10px 16px; font-size: 0.82rem;
+  font-weight: 600; letter-spacing: 0.02em;
+}
+.urgency-bar .countdown-num {
+  display: inline-block; background: var(--accent); padding: 2px 8px;
+  border-radius: 4px; font-weight: 800; margin: 0 2px; font-variant-numeric: tabular-nums;
+}
+section { padding: 56px 0; }
+.section-label { text-transform: uppercase; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
+.section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 36px; line-height: 1.65; }
+.highlight-accent { color: var(--accent); font-weight: 700; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: white; padding: 16px 36px;
+  border-radius: 12px; font-size: 1.02rem; font-weight: 700;
+  text-decoration: none; transition: all 0.25s;
+  box-shadow: 0 4px 20px var(--accent-glow); border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
 
-    section { padding: 56px 0; }
-    .section-label {
-        text-transform: uppercase;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: var(--accent);
-        margin-bottom: 12px;
-    }
-    .section-title {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: clamp(1.5rem, 4vw, 2.1rem);
-        line-height: 1.25;
-        margin-bottom: 16px;
-        letter-spacing: -0.02em;
-    }
-    .section-subtitle {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        margin-bottom: 36px;
-        line-height: 1.65;
-    }
+/* HERO */
+.hero-optimized { background-color: #FFFFFF; padding: 80px 20px 60px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; }
+.hero-optimized-container { max-width: 720px; margin: 0 auto; }
+.hero-eyebrow-pill { display: inline-flex; align-items: center; background-color: var(--bg-highlight); color: var(--accent); font-size: 0.75rem; font-weight: 700; padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; letter-spacing: 0.02em; }
+.hero-headline { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.02em; }
+.hero-headline .line-1 { color: #1A1A1A; display: block; }
+.hero-headline .line-2 { color: var(--accent); display: block; margin-top: 4px; }
+.hero-description { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+.hero-clarity-line { font-size: 1.05rem; color: #1A1A1A; font-weight: 600; margin-bottom: 40px; }
+.hero-founder-strip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; margin-bottom: 48px; }
+@media (min-width: 640px) { .hero-founder-strip { flex-direction: row; text-align: left; } }
+.hero-founder-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-glow); }
+.hero-founder-title { font-weight: 700; font-size: 1rem; color: var(--text-primary); margin-bottom: 4px; }
+.hero-founder-stats { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+.hero-founder-stats .dot { color: #22C55E; font-size: 0.6rem; vertical-align: middle; margin-right: 4px; }
+.hero-offer-card { background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.06); text-align: left; }
+@media (min-width: 640px) { .hero-offer-card { padding: 40px; } }
+.offer-card-title { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
+.offer-checklist { list-style: none; padding: 0; margin: 0 0 32px; }
+.offer-checklist li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 1.05rem; color: var(--text-primary); line-height: 1.5; font-weight: 500; }
+.offer-checklist li i { color: #10B981; margin-top: 4px; font-size: 1.1rem; }
+.pricing-block { background: #FAF9F6; border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 24px; }
+.pricing-mission-text { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; font-weight: 500; }
+.pricing-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+.price-strike { font-size: 1.4rem; color: var(--text-muted); text-decoration: line-through; font-weight: 600; }
+.price-current { font-size: 2.5rem; color: var(--text-primary); font-weight: 800; line-height: 1; }
+.price-badge { background: var(--green-light); color: var(--green); font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; transform: translateY(-4px); }
+/* FIX 8: Single slot number — 8 slots */
+.scarcity-line { color: #DC2626; font-size: 0.85rem; font-weight: 600; margin: 0; }
+.hero-cta-btn { display: block; width: 100%; background: var(--accent); color: #FFFFFF; text-align: center; font-size: 1.15rem; font-weight: 700; padding: 18px 24px; border-radius: 16px; text-decoration: none; transition: all 0.2s ease-in-out; box-shadow: 0 8px 24px var(--accent-glow); }
+.hero-cta-btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.hero-trust-subtext { text-align: center; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; margin-top: 16px; margin-bottom: 24px; }
+.hero-trust-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.hero-trust-icons span { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; }
 
-    .pain-section {
-        background: white;
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-    }
-    .pain-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 22px 0;
-        border-bottom: 1px solid var(--border);
-    }
-    .pain-card:last-child { border-bottom: none; }
-    .pain-icon {
-        flex-shrink: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: #FEF2F2;
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-        margin-top: 2px;
-    }
-    .pain-card p {
-        font-size: 0.95rem;
-        color: var(--text-primary);
-        line-height: 1.6;
-    }
-    .pain-closing {
-        text-align: center;
-        padding-top: 32px;
-        font-size: 1.05rem;
-        color: var(--text-secondary);
-        line-height: 1.7;
-    }
-    .pain-closing strong {
-        color: var(--text-primary);
-        display: block;
-        font-size: 1.15rem;
-        margin-top: 8px;
-    }
+/* PAIN */
+.pain-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.pain-card { display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.pain-card:last-child { border-bottom: none; }
+.pain-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: #FEF2F2; color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-top: 2px; }
+.pain-card p { font-size: 0.95rem; color: var(--text-primary); line-height: 1.6; }
+.pain-closing { text-align: center; padding-top: 32px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; }
+.pain-closing strong { color: var(--text-primary); display: block; font-size: 1.15rem; margin-top: 8px; }
 
-    .story-section {
-        background: var(--bg);
-    }
-    .story-box {
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 40px 32px;
-        box-shadow: var(--shadow-sm);
-    }
-    .story-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 28px;
-        padding-bottom: 24px;
-        border-bottom: 1px solid var(--border);
-    }
-    .story-avatar {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), #FF6B5A);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 800;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-    .story-meta h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 2px;
-    }
-    .story-meta p {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        font-weight: 500;
-    }
-    .story-credential {
-        display: inline-block;
-        background: var(--gold-light);
-        color: var(--gold);
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 3px 10px;
-        border-radius: 100px;
-        margin-top: 4px;
-    }
-    .story-content p {
-        font-size: 0.95rem;
-        color: var(--text-secondary);
-        margin-bottom: 18px;
-        line-height: 1.75;
-    }
-    .story-content .emphasis {
-        color: var(--text-primary);
-        font-weight: 600;
-    }
-    .story-content .emotional {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: 1.15rem;
-        color: var(--text-primary);
-        line-height: 1.5;
-        padding: 20px 0;
-        text-align: center;
-        font-style: italic;
-    }
-    .story-callout {
-        background: #FEF2F2;
-        border-left: 3px solid var(--accent);
-        padding: 16px 20px;
-        border-radius: 0 8px 8px 0;
-        margin: 20px 0;
-        font-size: 0.9rem;
-        color: var(--text-primary);
-        line-height: 1.65;
-    }
-    .story-result {
-        background: var(--green-light);
-        border-left: 3px solid var(--green);
-        padding: 16px 20px;
-        border-radius: 0 8px 8px 0;
-        margin: 20px 0;
-        font-size: 0.9rem;
-        color: var(--text-primary);
-        line-height: 1.65;
-    }
-    .story-mission {
-        text-align: center;
-        padding-top: 24px;
-        margin-top: 24px;
-        border-top: 1px solid var(--border);
-    }
-    .story-mission p {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-size: 1.15rem;
-        color: var(--text-primary);
-        line-height: 1.5;
-        font-style: italic;
-        margin-bottom: 8px !important;
-    }
-    .story-mission .attribution {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.8rem !important;
-        color: var(--text-muted) !important;
-        font-style: normal;
-        font-weight: 600;
-    }
+/* STORY */
+.story-section { background: var(--bg); }
+.story-box { background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow-sm); }
+.story-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.story-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.story-meta h3 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.story-meta p { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.story-credential { display: inline-block; background: var(--gold-light); color: var(--gold); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-top: 4px; }
+.story-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 18px; line-height: 1.75; }
+.story-content .emphasis { color: var(--text-primary); font-weight: 600; }
+.story-content .emotional { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.15rem; color: var(--text-primary); line-height: 1.5; padding: 20px 0; text-align: center; font-style: italic; }
+.story-callout { background: #FEF2F2; border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 0.9rem; color: var(--text-primary); line-height: 1.65; }
+.story-result { background: var(--green-light); border-left: 3px solid var(--green); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 0.9rem; color: var(--text-primary); line-height: 1.65; }
+.story-mission { text-align: center; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--border); }
+.story-mission p { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.15rem; color: var(--text-primary); line-height: 1.5; font-style: italic; margin-bottom: 8px !important; }
+.story-mission .attribution { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem !important; color: var(--text-muted) !important; font-style: normal; font-weight: 600; }
 
-    .solution-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .step-card {
-        display: flex;
-        gap: 20px;
-        padding: 28px 0;
-        border-bottom: 1px solid var(--border);
-        position: relative;
-    }
-    .step-card:last-child { border-bottom: none; }
-    .step-num {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: var(--bg-dark);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.85rem;
-        font-weight: 800;
-        margin-top: 2px;
-    }
-    .step-content h3 {
-        font-size: 1.02rem;
-        font-weight: 700;
-        margin-bottom: 6px;
-        color: var(--text-primary);
-    }
-    .step-content p {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        line-height: 1.65;
-    }
-    .step-timing {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: var(--blue);
-        background: var(--blue-light);
-        padding: 3px 10px;
-        border-radius: 100px;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-    }
+/* STEPS */
+.solution-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.step-card { display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+.step-card:last-child { border-bottom: none; }
+.step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-dark); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; margin-top: 2px; }
+.step-content h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary); }
+.step-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+.step-timing { display: inline-block; font-size: 0.72rem; font-weight: 700; color: var(--blue); background: var(--blue-light); padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em; }
 
-    .toolkit-section { background: var(--bg); }
-    .toolkit-grid {
-        display: grid;
-        gap: 14px;
-    }
-    .toolkit-item {
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 22px 24px;
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        transition: all 0.2s;
-    }
-    .toolkit-item:hover {
-        border-color: var(--border-strong);
-        box-shadow: var(--shadow-sm);
-    }
-    .toolkit-icon {
-        flex-shrink: 0;
-        width: 42px;
-        height: 42px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-    }
-    .toolkit-icon.red { background: #FEF2F2; }
-    .toolkit-icon.blue { background: var(--blue-light); }
-    .toolkit-icon.green { background: var(--green-light); }
-    .toolkit-icon.gold { background: var(--gold-light); }
-    .toolkit-item h4 {
-        font-size: 0.92rem;
-        font-weight: 700;
-        margin-bottom: 4px;
-        color: var(--text-primary);
-    }
-    .toolkit-item p {
-        font-size: 0.82rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-    }
-    .toolkit-badge {
-        display: inline-block;
-        background: var(--green-light);
-        color: var(--green);
-        font-size: 0.65rem;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 100px;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 6px;
-    }
+/* TOOLKIT */
+.toolkit-section { background: var(--bg); }
+.toolkit-grid { display: grid; gap: 14px; }
+.toolkit-item { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; display: flex; align-items: flex-start; gap: 16px; transition: all 0.2s; }
+.toolkit-item:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.toolkit-icon { flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.toolkit-icon.red { background: #FEF2F2; }
+.toolkit-icon.blue { background: var(--blue-light); }
+.toolkit-icon.green { background: var(--green-light); }
+.toolkit-icon.gold { background: var(--gold-light); }
+.toolkit-item h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; color: var(--text-primary); }
+.toolkit-item p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.toolkit-badge { display: inline-block; background: var(--green-light); color: var(--green); font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
 
-    .audience-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .audience-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-    @media (max-width: 550px) { .audience-grid { grid-template-columns: 1fr; } }
-    .audience-card {
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 20px;
-        background: var(--bg);
-        transition: all 0.2s;
-    }
-    .audience-card:hover {
-        border-color: var(--accent);
-        background: white;
-    }
-    .audience-card .emoji {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        display: block;
-    }
-    .audience-card h4 {
-        font-size: 0.88rem;
-        font-weight: 700;
-        margin-bottom: 4px;
-    }
-    .audience-card p {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-    }
+/* AUDIENCE */
+.audience-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 550px) { .audience-grid { grid-template-columns: 1fr; } }
+.audience-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; background: var(--bg); transition: all 0.2s; }
+.audience-card:hover { border-color: var(--accent); background: white; }
+.audience-card .emoji { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+.audience-card h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+.audience-card p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
 
-    /* === NEW: What This Is NOT === */
-    .not-section { background: var(--bg); }
-    .not-card {
-        display: flex; align-items: flex-start; gap: 14px;
-        padding: 18px 0; border-bottom: 1px solid var(--border);
-    }
-    .not-card:last-child { border-bottom: none; }
-    .not-icon {
-        flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-        background: #FEF2F2; color: ;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.75rem; font-weight: 800; margin-top: 2px;
-    }
-    .not-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
-    .not-card strong { color: var(--text-primary); }
+/* SCORE ROWS */
+.score-row { display: flex; align-items: center; gap: 8px; margin: 10px 0 6px; padding: 8px 12px; background: var(--green-light); border-radius: 8px; }
+.score-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+.score-val { font-size: 1rem; font-weight: 800; }
+.score-before { color: #DC2626; }
+.score-after { color: var(--green); }
+.score-arrow { color: var(--text-muted); font-size: 0.8rem; }
 
-    /* === NEW: FAQ === */
-    .faq-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 18px 0; cursor: pointer; gap: 16px;
-    }
-    .faq-q h4 { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
-    .faq-q .faq-toggle {
-        flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
-        background: var(--bg); display: flex; align-items: center; justify-content: center;
-        font-size: 0.75rem; color: var(--text-muted); transition: transform 0.2s;
-    }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .faq-a-inner { padding: 0 0 18px; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
-    .faq-item.open .faq-a { max-height: 300px; }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+/* FIX 4: not-icon color fixed */
+.not-section { background: var(--bg); }
+.not-card { display: flex; align-items: flex-start; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.not-card:last-child { border-bottom: none; }
+.not-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #FEF2F2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 2px; }
+.not-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+.not-card strong { color: var(--text-primary); }
 
-    /* === NEW: Score rows in transformations === */
-    .score-row {
-        display: flex; align-items: center; gap: 8px; margin: 10px 0 6px;
-        padding: 8px 12px; background: var(--green-light); border-radius: 8px;
-    }
-    .score-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
-    .score-val { font-size: 1rem; font-weight: 800; }
-    .score-before { color: #DC2626; }
-    .score-after { color: var(--green); }
-    .score-arrow { color: var(--text-muted); font-size: 0.8rem; }
+/* FAQ */
+.faq-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; gap: 16px; }
+.faq-q h4 { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+.faq-q .faq-toggle { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--text-muted); transition: transform 0.2s; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-a-inner { padding: 0 0 18px; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
 
-    .sticky-cta { transform: translateY(100%); transition: transform 0.3s ease-in-out; }
-    .sticky-cta.visible { transform: translateY(0); }
-    #notes-addon:checked + div { border-color: #ca8a04; background-color: #fefce8; border-style: solid; box-shadow: 0 4px 6px -1px rgba(202, 138, 4, 0.1); }
-    #notes-addon:checked + div .checkbox-square { background-color: #eab308; border-color: #eab308; }
-    #notes-addon:checked + div .check-icon { opacity: 1; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* BRIDGE SECTION — new */
+.bridge-section { background: linear-gradient(135deg, #F2F1FF 0%, #EEF2FF 100%); border-top: 1px solid #DDD6FE; border-bottom: 1px solid #DDD6FE; padding: 56px 0; }
+.bridge-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+.bridge-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px; }
+.bridge-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.4rem, 4vw, 2rem); color: var(--text-primary); line-height: 1.3; margin-bottom: 14px; }
+.bridge-sub { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+.bridge-points { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 28px; }
+.bridge-points li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font-size: 0.9rem; color: var(--text-primary); line-height: 1.5; border-bottom: 1px solid rgba(91,75,219,0.1); }
+.bridge-points li:last-child { border-bottom: none; }
+.bridge-points li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.bridge-cta { display: inline-block; background: var(--accent); color: white; padding: 14px 32px; border-radius: 12px; font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.bridge-cta:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.bridge-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; }
 
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up {
-        opacity: 0;
-        animation: fadeUp 0.6s ease forwards;
-    }
-    .fade-up.d1 { animation-delay: 0.1s; }
-    .fade-up.d2 { animation-delay: 0.2s; }
-    .fade-up.d3 { animation-delay: 0.3s; }
-    .fade-up.d4 { animation-delay: 0.4s; }
-
-    @media (max-width: 600px) {
-        .container { padding: 0 16px; }
-        section { padding: 44px 0; }
-        .story-box { padding: 28px 20px; }
-        .hero { padding: 44px 0 36px; }
-        .hero-trust { gap: 16px; }
-    }
+/* STICKY + MISC */
+.sticky-cta { transform: translateY(100%); transition: transform 0.3s ease-in-out; }
+.sticky-cta.visible { transform: translateY(0); }
+#notes-addon:checked + div { border-color: #ca8a04; background-color: #fefce8; border-style: solid; }
+#notes-addon:checked + div .checkbox-square { background-color: #eab308; border-color: #eab308; }
+#notes-addon:checked + div .check-icon { opacity: 1; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.fade-up.d1 { animation-delay: 0.1s; }
+.fade-up.d2 { animation-delay: 0.2s; }
+.fade-up.d3 { animation-delay: 0.3s; }
+.fade-up.d4 { animation-delay: 0.4s; }
+@media (max-width: 600px) { .container { padding: 0 16px; } section { padding: 44px 0; } .story-box { padding: 28px 20px; } .hero-optimized { padding: 100px 16px 40px; } .hero-headline { font-size: 2rem; } }
 </style>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "vnlsks8mer");
+
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vnlsks8mer");
 </script>
 </head>
+
 <body class="bg-gray-50 text-gray-900 antialiased">
 
-<!-- ====== NAVBAR (unchanged) ====== -->
+<!-- NAVBAR — FIX 3: brand href → iituitions.com -->
 <nav class="navbar">
-<div class="container">
-<a href="#" class="navbar-brand">IIT<span>uitions</span> <span style="font-weight:400; font-size:0.75rem; color:#999; margin-left:2px;">Mentorship</span></a>
-<a href="#pricing" class="navbar-cta">Enroll ₹1,499 →</a>
-</div>
+  <div class="container">
+    <a href="https://www.iituitions.com" class="navbar-brand">IIT<span>uitions</span> <span style="font-weight:400;font-size:0.75rem;color:#999;margin-left:2px;">Mentorship</span></a>
+    <a href="#pricing" class="navbar-cta">Enroll ₹1,499 →</a>
+  </div>
 </nav>
 
-<!-- ====== URGENCY BAR (unchanged) ====== -->
-<div class="urgency-bar">
-JEE Mains 2026 is <span class="countdown-num" id="daysLeft">--</span> days away — Every day without a plan = marks lost.
+<!-- URGENCY BAR — FIX 7: updated date + hide if expired -->
+<div class="urgency-bar" id="urgency-bar">
+  JEE Mains 2026 is <span class="countdown-num" id="daysLeft">--</span> days away — Every day without a plan = marks lost.
 </div>
 
-<!-- ====== HERO (unchanged) ====== -->
-<style>
-/* ==========================================================
-   UPDATED HERO SECTION STYLES
-   ========================================================== */
-.hero-optimized {
-    background-color: #FFFFFF;
-    padding: 80px 20px 60px;
-    text-align: center;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.hero-optimized-container {
-    max-width: 720px;
-    margin: 0 auto;
-}
-
-.hero-eyebrow-pill {
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--bg-highlight);
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 6px 16px;
-    border-radius: 100px;
-    margin-bottom: 32px;
-    letter-spacing: 0.02em;
-}
-
-.hero-headline {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: clamp(2.2rem, 6vw, 3.2rem);
-    line-height: 1.15;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
-}
-
-.hero-headline .line-1 {
-    color: #1A1A1A;
-    display: block;
-}
-
-.hero-headline .line-2 {
-    color: var(--accent);
-    display: block;
-    margin-top: 4px;
-}
-
-.hero-description {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
-  
-.hero-clarity-line {
-    font-size: 1.05rem;
-    color: #1A1A1A; /* Strong conversion red */
-    font-weight: 600;
-    margin-bottom: 40px;
-}
-
-.hero-founder-strip {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 48px;
-}
-
-@media (min-width: 640px) {
-    .hero-founder-strip {
-        flex-direction: row;
-        text-align: left;
-    }
-}
-
-.hero-founder-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent-glow);
-}
-
-.hero-founder-info p {
-    margin: 0;
-}
-
-.hero-founder-title {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-}
-
-.hero-founder-stats {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.hero-founder-stats .dot {
-    color: #22C55E;
-    font-size: 0.6rem;
-    vertical-align: middle;
-    margin-right: 4px;
-}
-
-.hero-offer-card {
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 24px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-    text-align: left;
-}
-
-@media (min-width: 640px) {
-    .hero-offer-card {
-        padding: 40px;
-    }
-}
-
-.offer-card-title {
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 24px;
-}
-
-.offer-checklist {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 32px;
-}
-
-.offer-checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-.offer-checklist li i {
-    color: #10B981;
-    margin-top: 4px;
-    font-size: 1.1rem;
-}
-
-.pricing-block {
-    background: #FAF9F6;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.pricing-mission-text {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-    font-weight: 500;
-}
-
-.pricing-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.price-strike {
-    font-size: 1.4rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-    font-weight: 600;
-}
-
-.price-current {
-    font-size: 2.5rem;
-    color: var(--text-primary);
-    font-weight: 800;
-    line-height: 1;
-}
-
-.price-badge {
-    background: var(--green-light);
-    color: var(--green);
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transform: translateY(-4px);
-}
-
-.scarcity-line {
-    color: #DC2626;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.hero-cta-btn {
-    display: block;
-    width: 100%;
-    background: var(--accent);
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 1.15rem;
-    font-weight: 700;
-    padding: 18px 24px;
-    border-radius: 16px;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 8px 24px var(--accent-glow);
-}
-
-.hero-cta-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px var(--accent-glow);
-}
-
-.hero-trust-subtext {
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-    margin-top: 16px;
-    margin-bottom: 24px;
-}
-
-.hero-trust-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.hero-trust-icons span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 600;
-}
-
-@media (max-width: 600px) {
-    .hero-optimized { padding: 100px 16px 40px; }
-    .hero-headline { font-size: 2rem; }
-}
-</style>
-
+<!-- HERO -->
 <section class="hero-optimized">
-    <div class="hero-optimized-container">
+  <div class="hero-optimized-container">
+    <div class="hero-eyebrow-pill fade-up">✦ 10,000+ Students Guided Since 2017</div>
+    <h1 class="hero-headline fade-up d1">
+      <span class="line-1">Your Child Doesn't Need More Coaching.</span>
+      <span class="line-2">They Need a Clear Plan Before It's Too Late.</span>
+    </h1>
+    <p class="hero-description fade-up d2">
+      In a private one-to-one session, we build your child a
+      <span class="highlight-accent">personalized 90-day JEE execution roadmap</span> —
+      based on their weak chapters, mock scores, and available study hours.
+    </p>
+    <p class="hero-clarity-line fade-up d2">No generic advice. No recorded videos. No AI. Just real strategy.</p>
+    <div class="hero-founder-strip fade-up d2">
+      
+      <img src="https://mentorship-blue-gamma.vercel.app/t2.png" alt="Prudhvi Chand" class="hero-founder-img">
+      <div class="hero-founder-info">
+        <p class="hero-founder-title">Led by Prudhvi Chand's Team · AIR 367 · NIT Warangal</p>
+        <p class="hero-founder-stats"><span class="dot">●</span> 10,000+ students guided since 2017</p>
+      </div>
+    </div>
+    <div class="hero-offer-card fade-up d3">
+      <h3 class="offer-card-title">YOUR CHILD GETS:</h3>
+      <ul class="offer-checklist">
+        <li><i class="fa-solid fa-check"></i><span><strong>Personalized 90-day roadmap</strong> — what to study, what to skip</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Weak chapter attack plan</strong> — built from mock gaps</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>100 high-probability JEE questions</strong> — based on NTA pattern analysis (2020–2025)</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Live 1-on-1 strategy call</strong> (not a video course)</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Senior IIT/NIT faculty</strong>, not AI</span></li>
+      </ul>
+      <div class="pricing-block">
+        <p class="pricing-mission-text">Founder's Mission Pricing</p>
+        <div class="pricing-row">
+          <span class="price-strike">₹5,000</span>
+          <span class="price-current">₹1,499</span>
+          <span class="price-badge">ONE-TIME</span>
+        </div>
         
-        <div class="hero-eyebrow-pill fade-up">
-            ✦ 10,000+ Students Guided Since 2017
-        </div>
-
-        <h1 class="hero-headline fade-up d1">
-            <span class="line-1">Your Child Doesn’t Need More Coaching.</span>
-            <span class="line-2">They Need a Clear Plan Before It’s Too Late.</span>
-        </h1>
-
-        <p class="hero-description fade-up d2">
-            In private one-to-one session, we build your child a 
-<span class="highlight-accent">
-personalized 90-day JEE execution roadmap
-</span> — 
-based on their weak chapters, mock scores, and available study hours.
-        </p>
-
-        <p class="hero-clarity-line fade-up d2">
-    No generic advice. No recorded videos. No AI. Just real strategy.
-</p>
-
-        <div class="hero-founder-strip fade-up d2">
-            <img src="t2.png" alt="Prudhvi Chand" class="hero-founder-img">
-            <div class="hero-founder-info">
-                <p class="hero-founder-title">Led by Prudhvi Chand's Team · AIR 367 · NIT Warangal</p>
-                <p class="hero-founder-stats"><span class="dot">●</span> 10,000+ students guided since 2017</p>
-            </div>
-        </div>
-
-        <div class="hero-offer-card fade-up d3">
-            <h3 class="offer-card-title">YOUR CHILD GETS:</h3>
-            
-            <ul class="offer-checklist">
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><strong>Personalized 90-day roadmap</strong> — what to study, what to skip</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><strong>Weak chapter attack plan</strong> — built from mock gaps</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><strong>100 high-probability JEE questions</strong> — based on NTA pattern analysis (2020–2025)</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><strong>Live 1-on-1 strategy call</strong> (not a video course)</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><strong>Senior IIT/NIT faculty</strong>, not AI</span>
-                </li>
-            </ul>
-
-            <div class="pricing-block">
-                <p class="pricing-mission-text">Founder’s Mission Pricing</p>
-                <div class="pricing-row">
-                    <span class="price-strike">₹5,000</span>
-                    <span class="price-current">₹1,499</span>
-                    <span class="price-badge">ONE-TIME</span>
-                </div>
-                <p class="scarcity-line">⚠️ Only 8 one-on-one slots available today (faculty limit)</p>
-            </div>
-
-            <a href="#pricing" class="hero-cta-btn">
-                Give My Child a Clear Roadmap → ₹1,499
-            </a>
-            
-            <p class="hero-trust-subtext">Instant access to materials + Live session within 24 hours</p>
-            
-            <div class="hero-trust-icons">
-                <span>🔒 Secure Payment</span>
-                <span>⚡ Instant Access</span>
-                <span>🛡️ Clarity Guarantee</span>
-            </div>
-        </div>
-
+        <p class="scarcity-line">⚠️ Only 8 one-on-one slots available per week (faculty limit)</p>
+      </div>
+      <a href="#pricing" class="hero-cta-btn">Give My Child a Clear Roadmap → ₹1,499</a>
+      <p class="hero-trust-subtext">Materials instant · Live session within 24 hours</p>
+      <div class="hero-trust-icons">
+        <span>🔒 Secure Payment</span>
+        <span>⚡ Instant Access</span>
+        <span>🛡️ Clarity Guarantee</span>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ====== RESULTS MINI-BANNER (unchanged) ====== -->
-<div style="background: var(--bg-dark); padding: 20px 0;">
-<div class="container">
-<div style="display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; text-align: center;">
-<div>
-<div style="font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: -0.02em;">10,000+</div>
-<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Students Mentored</div>
-</div>
-<div style="width: 1px; background: #333; align-self: stretch;"></div>
-<div>
-<div style="font-size: 1.6rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em;">AIR 367</div>
-<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Founder's JEE Rank</div>
-</div>
-<div style="width: 1px; background: #333; align-self: stretch;"></div>
-<div>
-<div style="font-size: 1.6rem; font-weight: 800; color: #4ADE80; letter-spacing: -0.02em;">Since 2017</div>
-<div style="font-size: 0.72rem; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Trusted for 9 Years</div>
-</div>
-</div>
-<p style="text-align: center; font-size: 0.72rem; color: #777; margin-top: 12px; font-weight: 500;">Hyderabad offline batches + Online 1-on-1 mentorships since 2017</p>
-</div>
-</div>
 
-<!-- ====== PAIN SECTION (unchanged) ====== -->
+
+<!-- PAIN SECTION -->
 <section class="pain-section">
-<div class="container">
-<div class="section-label" style="text-align:center;">Be honest with yourself</div>
-<h2 class="section-title" style="text-align:center;">Does This Sound Like Your Child?</h2>
-<p class="section-subtitle" style="text-align:center; max-width:500px; margin-left:auto; margin-right:auto;">
-If even one of these feels familiar, your child may need a clear plan.
-</p>
-
-<div class="pain-card">
-  <div class="pain-icon">😰</div>
-  <p>Your child studies <strong>6-8 hours daily</strong>,but their mock test scores have been stuck for weeks. More effort isn’t translating into more marks.</p>
-</div>
-
-<div class="pain-card">
-  <div class="pain-icon">📚</div>
-  <p>Your child has<strong>50 saved PDFs, 20 YouTube playlists, and 10 books</strong> but still doesn’t know what to open tomorrow morning.</p>
-</div>
-
-<div class="pain-card">
-  <div class="pain-icon">🏫</div>
-  <p>Their coaching handles <strong>100+ students</strong> in one batch. Nobody has time to build a plan that fits YOUR child's strengths and weaknesses.</p>
-</div>
- 
-<div class="pain-card">
-  <div class="pain-icon">😶</div>
-  <p>They revise the same chapters again and again, but <strong>exam questions still feel unfamiliar</strong> — like they’re studying the wrong things.</p>
-</div>
-   
-<div class="pain-card">
-  <div class="pain-icon">⏰</div>
-  <p>Every day, the <strong>exam gets closer</strong>. And every day, the anxiety grows — because there isn’t a clear plan from today until exam day.</p>
-</div>
-
-<div class="pain-closing">
-  <p>The frustrating part?</p>
-  <strong>The problem isn’t your child’s effort. It’s that nobody built a roadmap specifically for them.</strong></div>
-</div>
-</section>
-
-
-<!-- ====== FOUNDER STORY (unchanged) ====== -->
-<section class="story-section">
-
-
-<div class="story-box">
-  <div class="story-header">
-    <div class="story-avatar">
-  <img src="t2.png" alt="Prudhvi Chand"
-       class="w-full h-full object-cover rounded-full">
-</div>
-    <div class="story-meta">
-      <h3>Prudhvi Chand</h3>
-      <p>Founder, IITuitions (Since 2017)</p>
-      <span class="story-credential">🏆 AIR 367 — NIT Warangal</span>
-    </div>
-  </div>
-  <p class="text-center text-gray-600 text-lg mb-8">
-  Here's why <strong>Prudhvi</strong> built IITuitions — and why this mentorship exists.
-</p>
-  
   <div class="container">
-<h2 class="section-title" style="text-align:center;">I Know Exactly How You Feel. Because I Was You.</h2>
-<div style="height: 28px;"></div>
-  <div class="story-content">
-    <p>After 10th grade, I was just a kid from a regular school. <span class="emphasis">No foundation classes. No coaching background. No head start.</span></p>
-    
-    <p>When I walked into my first IIT coaching class in 11th grade, everyone else seemed to already know the game. I didn't even fully understand what JEE really was.</p>
-    
-    <div class="story-callout">
-      I spent my entire 11th grade just trying to figure out the basics — what to study, what to skip, what actually matters for the exam. By the time I understood the race I was running, <strong>the most valuable year of my preparation was already over.</strong>
-    </div>
-    
-    <p>12th grade hit like a truck. I had <span class="emphasis">11th grade backlogs. An entirely new syllabus. And a coaching that treated 100 students exactly the same way</span> — no one had time to give ME a plan that fit MY strengths and weaknesses.</p>
-    
-    <p>The teachers were good. The coaching was decent. But the system was designed for everyone. Not for me.</p>
-    
-    <p class="emotional">"So I sat down and built my own roadmap. Topic by topic. Day by day. Alone."</p>
-    
-    <div class="story-result">
-      <strong>I cracked JEE. I got into NIT Warangal — All India Rank 367.</strong><br><br>
-      But it cost me double the stress, double the effort, and countless sleepless nights that I didn't need to go through — if only someone had given me a clear, personalized plan from day one.
-    </div>
-    
-    <p>That year of confusion — of studying hard but in the wrong direction — I don't want any student to go through that. <span class="emphasis">That's why I trained a team of senior IIT/NIT faculty to do what I wished someone had done for me — sit with you one-on-one and build YOUR specific roadmap.</span></p>
-    
-    <div class="story-mission">
-      <p>"I built this mentorship — and trained a team of experienced faculty — so that no student wastes a single day studying in the dark. Your roadmap should exist before you open your first book tomorrow."</p>
-      <p class="attribution">— Prudhvi Chand, AIR 367 | NIT Warangal | Founder, IITuitions</p>
-    </div>
+    <div class="section-label" style="text-align:center;">Be honest with yourself</div>
+    <h2 class="section-title" style="text-align:center;">Does This Sound Like Your Child?</h2>
+    <p class="section-subtitle" style="text-align:center;max-width:500px;margin-left:auto;margin-right:auto;">If even one of these feels familiar, your child may need a clear plan.</p>
+    <div class="pain-card"><div class="pain-icon">😰</div><p>Your child studies <strong>6-8 hours daily</strong>, but their mock test scores have been stuck for weeks. More effort isn't translating into more marks.</p></div>
+    <div class="pain-card"><div class="pain-icon">📚</div><p>Your child has <strong>50 saved PDFs, 20 YouTube playlists, and 10 books</strong> but still doesn't know what to open tomorrow morning.</p></div>
+    <div class="pain-card"><div class="pain-icon">🏫</div><p>Their coaching handles <strong>100+ students</strong> in one batch. Nobody has time to build a plan that fits YOUR child's strengths and weaknesses.</p></div>
+    <div class="pain-card"><div class="pain-icon">😶</div><p>They revise the same chapters again and again, but <strong>exam questions still feel unfamiliar</strong> — like they're studying the wrong things.</p></div>
+    <div class="pain-card"><div class="pain-icon">⏰</div><p>Every day, the <strong>exam gets closer</strong>. And every day, the anxiety grows — because there isn't a clear plan from today until exam day.</p></div>
+    <div class="pain-closing"><p>The frustrating part?</p><strong>The problem isn't your child's effort. It's that nobody built a roadmap specifically for them.</strong></div>
   </div>
-</div>
-</div>
 </section>
 
+<!-- FOUNDER STORY — FIX 5: added container wrapper -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-box">
+      <div class="story-header">
+        <div class="story-avatar">
+          
+          <img src="https://mentorship-blue-gamma.vercel.app/t2.png" alt="Prudhvi Chand" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        </div>
+        <div class="story-meta">
+          <h3>Prudhvi Chand</h3>
+          <p>Founder, IITuitions (Since 2017)</p>
+          <span class="story-credential">🏆 AIR 367 — NIT Warangal</span>
+        </div>
+      </div>
+      <p class="text-center text-gray-600 text-lg mb-8">Here's why <strong>Prudhvi</strong> built IITuitions — and why this mentorship exists.</p>
+      <h2 class="section-title" style="text-align:center;">I Know Exactly How You Feel. Because I Was You.</h2>
+      <div style="height:28px;"></div>
+      <div class="story-content">
+        <p>After 10th grade, I was just a kid from a regular school. <span class="emphasis">No foundation classes. No coaching background. No head start.</span></p>
+        <p>When I walked into my first IIT coaching class in 11th grade, everyone else seemed to already know the game. I didn't even fully understand what JEE really was.</p>
+        <div class="story-callout">I spent my entire 11th grade just trying to figure out the basics — what to study, what to skip, what actually matters for the exam. By the time I understood the race I was running, <strong>the most valuable year of my preparation was already over.</strong></div>
+        <p>12th grade hit like a truck. I had <span class="emphasis">11th grade backlogs. An entirely new syllabus. And a coaching that treated 100 students exactly the same way</span> — no one had time to give ME a plan that fit MY strengths and weaknesses.</p>
+        <p>The teachers were good. The coaching was decent. But the system was designed for everyone. Not for me.</p>
+        <p class="emotional">"So I sat down and built my own roadmap. Topic by topic. Day by day. Alone."</p>
+        <div class="story-result"><strong>I cracked JEE. I got into NIT Warangal — All India Rank 367.</strong><br><br>But it cost me double the stress, double the effort, and countless sleepless nights that I didn't need to go through — if only someone had given me a clear, personalized plan from day one.</div>
+        <p>That year of confusion — of studying hard but in the wrong direction — I don't want any student to go through that. <span class="emphasis">That's why I trained a team of senior IIT/NIT faculty to do what I wished someone had done for me.</span></p>
+        <div class="story-mission">
+          <p>"I built this mentorship so that no student wastes a single day studying in the dark. Your roadmap should exist before you open your first book tomorrow."</p>
+          <p class="attribution">— Prudhvi Chand, AIR 367 | NIT Warangal | Founder, IITuitions</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-<!-- ====== 3-STEP SOLUTION (unchanged) ====== -->
+<!-- 4-STEP PROCESS -->
 <section class="solution-section">
-<div class="container">
-<div class="section-label" style="text-align:center;">Your Transformation Starts Here</div>
-<h2 class="section-title" style="text-align:center;">What Happens After You Enroll</h2>
-<p class="section-subtitle" style="text-align:center; max-width: 480px; margin-left:auto; margin-right:auto;">
-A structured 4-step process. No guesswork.
-</p>
-
-<div class="step-card">
-  <div class="step-num">1</div>
-  <div class="step-content">
-    <span class="step-timing">⚡ Instant</span>
-    <h3>Materials + Assessment Form Delivered</h3>
-    <p>Full toolkit sent to your email within minutes. Plus a short assessment form — your current level, weak chapters, mock scores, study hours.</p>
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Your Transformation Starts Here</div>
+    <h2 class="section-title" style="text-align:center;">What Happens After You Enroll</h2>
+    <p class="section-subtitle" style="text-align:center;max-width:480px;margin-left:auto;margin-right:auto;">A structured 4-step process. No guesswork.</p>
+    <div class="step-card"><div class="step-num">1</div><div class="step-content"><span class="step-timing">⚡ Instant</span><h3>Materials + Assessment Form Delivered</h3><p>Full toolkit sent to your email within minutes. Plus a short assessment form — your current level, weak chapters, mock scores, study hours.</p></div></div>
+    <div class="step-card"><div class="step-num">2</div><div class="step-content"><span class="step-timing">📝 10-15 minutes</span><h3>You Fill the Assessment</h3><p>Quick structured questionnaire. Tells us exactly where you stand — so your mentor arrives fully prepared, not asking basic questions on the call.</p></div></div>
+    <div class="step-card"><div class="step-num">3</div><div class="step-content"><span class="step-timing">📞 Within 24 hours</span><h3>Mentor Reviews Your Gaps &amp; Calls You</h3><p>A senior IIT/NIT faculty member reviews your assessment, identifies your gaps in advance, and calls you at your preferred time. 30 minutes of pure strategy.</p></div></div>
+    <div class="step-card"><div class="step-num">4</div><div class="step-content"><span class="step-timing">🎯 By end of session</span><h3>You Walk Away With YOUR Day-by-Day Roadmap</h3><p>Personalized plan from today until exam day — what to study, what to skip, what to do this week. Plus guidance on further sessions if you want ongoing mentorship.</p></div></div>
   </div>
-</div>
-
-<div class="step-card">
-  <div class="step-num">2</div>
-  <div class="step-content">
-    <span class="step-timing">📝 10-15 minutes</span>
-    <h3>You Fill the Assessment</h3>
-    <p>Quick structured questionnaire. Tells us exactly where you stand — so your mentor arrives fully prepared, not asking basic questions on the call.</p>
-  </div>
-</div>
-
-<div class="step-card">
-  <div class="step-num">3</div>
-  <div class="step-content">
-    <span class="step-timing">📞 Within 24 hours</span>
-    <h3>Mentor Reviews Your Gaps & Calls You</h3>
-    <p>A senior IIT/NIT faculty member reviews your assessment, identifies your gaps in advance, and calls you at your preferred time. 30 minutes of pure strategy.</p>
-  </div>
-</div>
-
-<div class="step-card">
-  <div class="step-num">4</div>
-  <div class="step-content">
-    <span class="step-timing">🎯 By end of session</span>
-    <h3>You Walk Away With YOUR Day-by-Day Roadmap</h3>
-    <p>Personalized plan from today until exam day — what to study, what to skip, what to do this week. Plus guidance on further sessions if you want ongoing mentorship.</p>
-  </div>
-</div>
-</div>
 </section>
 
-<!-- ====== TOOLKIT (unchanged) ====== -->
+<!-- TOOLKIT -->
 <section class="toolkit-section">
-<div class="container">
-<div class="section-label" style="text-align:center;">Included With Your Session</div>
-<h2 class="section-title" style="text-align:center;">The IITuitions Strategy Toolkit</h2>
-<p class="section-subtitle" style="text-align:center; max-width: 460px; margin-left:auto; margin-right:auto;">
-Instant access the moment you enroll.
-</p>
-
-<div class="toolkit-grid">
-  <div class="toolkit-item">
-    <div class="toolkit-icon red">📋</div>
-    <div>
-      <span class="toolkit-badge">Core Resource</span>
-      <h4>Your Custom Roadmap PDF</h4>
-      <p>Day-by-day plan built from your assessment + live session. Unique to YOUR gaps and timeline.</p>
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Included With Your Session</div>
+    <h2 class="section-title" style="text-align:center;">The IITuitions Strategy Toolkit</h2>
+    <p class="section-subtitle" style="text-align:center;max-width:460px;margin-left:auto;margin-right:auto;">Materials delivered the moment you enroll.</p>
+    <div class="toolkit-grid">
+      <div class="toolkit-item"><div class="toolkit-icon red">📋</div><div><span class="toolkit-badge">Core Resource</span><h4>Your Custom Roadmap PDF</h4><p>Day-by-day plan built from your assessment + live session. Unique to YOUR gaps and timeline.</p></div></div>
+      <div class="toolkit-item"><div class="toolkit-icon blue">📘</div><div><span class="toolkit-badge">Included Free</span><h4>Chapter-Wise High-Yield Questions</h4><p>Filtered important questions across Physics, Chemistry &amp; Maths. Only what actually appears in exams.</p></div></div>
+      <div class="toolkit-item"><div class="toolkit-icon gold">🎯</div><div><span class="toolkit-badge">Included Free</span><h4>Top 100 Predicted Questions — JEE 2026</h4><p>Built using NTA pattern analysis from 2020–2025 JEE papers. Aligned with repeated concept patterns from JEE Mains 2025.</p></div></div>
+      <div class="toolkit-item"><div class="toolkit-icon green">⚠️</div><div><span class="toolkit-badge">Included Free</span><h4>Common Errors &amp; Mistake Prevention</h4><p>The silly mistakes that cost 15-30 marks every exam. Identify them before exam day.</p></div></div>
     </div>
   </div>
-  <div class="toolkit-item">
-    <div class="toolkit-icon blue">📘</div>
-    <div>
-      <span class="toolkit-badge">Included Free</span>
-      <h4>Chapter-Wise High-Yield Questions</h4>
-      <p>Filtered important questions across Physics, Chemistry & Maths. Only what actually appears in exams.</p>
-    </div>
-  </div>
-  <div class="toolkit-item">
-    <div class="toolkit-icon gold">🎯</div>
-    <div>
-      <span class="toolkit-badge">Included Free</span>
-      <h4>Top 100 Predicted Questions — JEE 2026</h4>
-      <p>Built using detailed NTA pattern analysis from 2020–2025 JEE papers.
-Aligned with repeated concept patterns seen in JEE Mains 2025 (Jan session).</p>
-    </div>
-  </div>
-  <div class="toolkit-item">
-    <div class="toolkit-icon green">⚠️</div>
-    <div>
-      <span class="toolkit-badge">Included Free</span>
-      <h4>Common Errors & Mistake Prevention</h4>
-      <p>The silly mistakes that cost 15-30 marks every exam. Identify them before exam day.</p>
-    </div>
-  </div>
-</div>
-</div>
 </section>
 
-<!-- ====== AUDIENCE (unchanged) ====== -->
+<!-- AUDIENCE -->
 <section class="audience-section">
-<div class="container">
-<div class="section-label" style="text-align:center;">Built For Every Stage</div>
-<h2 class="section-title" style="text-align:center;">This Mentorship Is For You If…</h2>
-<div style="height: 28px;"></div>
-
-<div class="audience-grid">
-  <div class="audience-card"><span class="emoji">🌱</span><h4>Just Entered 11th Grade</h4><p>You want a strong foundation plan so you don't waste your most important year the way most students do.</p></div>
-  <div class="audience-card"><span class="emoji">⚡</span><h4>In 12th With Backlogs</h4><p>11th topics are unclear, 12th is piling up, and you need a recovery roadmap — fast.</p></div>
-  <div class="audience-card"><span class="emoji">🔄</span><h4>Dropper / Long-Term Student</h4><p>This is your second chance. You need a focused plan that doesn't repeat the mistakes of last year.</p></div>
-  <div class="audience-card"><span class="emoji">🚨</span><h4>JEE Is Weeks Away</h4><p>No time for trial and error. You need an emergency strategy — which chapters to hit, which to skip, and how to maximize marks NOW.</p></div>
-</div>
-</div>
-</section>
-
-<!-- ====== TRANSFORMATIONS — EDIT #7: Added before/after scores ====== -->
-<section id="results" class="py-20 bg-white overflow-hidden relative">
-<div class="max-w-6xl mx-auto px-4 relative">
-<h2 class="text-3xl font-bold text-center mb-12">Transformations</h2>
-<div class="relative overflow-hidden">
-<div id="hofSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-<img src="stu1.png" class="w-full h-64 object-cover">
-<div class="p-6">
-<div class="flex text-indigo-500 mb-2">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-</div>
-<h3 class="text-lg font-bold">K.Nikshiptha</h3>
-<p class="text-sm text-gray-500 mb-2">Student in KMC Warangal · IIT Rank 2252</p>
-<!-- ADDED: Before/After Score -->
-<div class="score-row">
-  <span class="score-label">Before:</span><span class="score-val score-before">92</span>
-  <span class="score-arrow">→</span>
-  <span class="score-label">After:</span><span class="score-val score-after">178</span>
-</div>
-<p class="text-gray-600 italic text-sm">"In just 4 months, my JEE score leapt forward by 86 marks. I wasted an entire year going by coaching guesswork."</p>
-</div>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-<img src="st2.png" class="w-full h-64 object-cover">
-<div class="p-6">
-<div class="flex text-indigo-500 mb-2">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-</div>
-<h3 class="text-lg font-bold">Stains Koduri</h3>
-<p class="text-sm text-gray-500 mb-2">NIT-W Rank 2512</p>
-<!-- ADDED: Before/After Score -->
-<div class="score-row">
-  <span class="score-label">Before:</span><span class="score-val score-before">110</span>
-  <span class="score-arrow">→</span>
-  <span class="score-label">After:</span><span class="score-val score-after">162</span>
-</div>
-<p class="text-gray-600 italic text-sm">"I moved up 148 AIR positions while juggling school and coaching. IITuitions gave me a clear daily plan."</p>
-</div>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-<img src="stu3.png" class="w-full h-64 object-cover">
-<div class="p-6">
-<div class="flex text-indigo-500 mb-2">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-</div>
-<h3 class="text-lg font-bold">Tummala Baladitya</h3>
-<p class="text-sm text-gray-500 mb-2">NIT-W Rank 1517</p>
-<div class="score-row">
-  <span class="score-label">Before:</span><span class="score-val score-before">95</span>
-  <span class="score-arrow">→</span>
-  <span class="score-label">After:</span><span class="score-val score-after">155</span>
-</div>
-<p class="text-gray-600 italic text-sm">"After only 2 months with my mentor, I saw a real improvement in my mock exam performance and gained confidence in crucial topics."</p>
-</div>
-</div>
-</div>
-</div>
-<button onclick="slideHOF(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-left"></i></button>
-<button onclick="slideHOF(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-right"></i></button>
-</div>
-</div>
-</section>
-
-<!-- ====== WHATSAPP PROOF (unchanged) ====== -->
-<section class="py-16 px-4 bg-gray-50">
-<div class="max-w-6xl mx-auto">
-<h2 class="font-serif text-3xl font-bold text-center mb-4">Unfiltered Feedback</h2>
-<p class="text-center text-gray-500 mb-10">Real conversations. No edits.</p>
-<div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar">
-<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300"><img src="ww1.png" alt="WhatsApp Review 1" class="w-full h-auto"></div>
-<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300"><img src="w2.png" alt="WhatsApp Review 2" class="w-full h-auto"></div>
-<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300"><img src="w3.png" alt="WhatsApp Review 3" class="w-full h-auto"></div>
-<div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200 transform hover:-translate-y-1 transition duration-300"><img src="w4.png" alt="WhatsApp Review 4" class="w-full h-auto"></div>
-</div>
-<div class="text-center mt-8"><p class="text-sm font-semibold text-green-600 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i> Verified WhatsApp Chats</p></div>
-</div>
-</section>
-
-<!-- ====== SECOND CTA — Catches users convinced by social proof ====== -->
-<div style="background: var(--accent); padding: 24px 0; text-align: center;">
-<div class="container">
-<p style="color: rgba(255,255,255,0.9); font-size: 0.88rem; font-weight: 600; margin-bottom: 12px;">
-Seen enough? Get YOUR roadmap today.
-</p>
-<a href="#pricing" style="display: inline-block; background: white; color: var(--accent); padding: 12px 28px; border-radius: 10px; font-size: 0.92rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-Enroll Now → ₹1,499
-</a>
-</div>
-</div>
-
-<!-- ====== FACULTY — EDIT #10: Removed placeholder Neha Gupta ====== -->
-<section id="mentors" class="py-20 bg-white">
-<div class="max-w-6xl mx-auto px-4 relative">
-<div class="text-center mb-12">
-<span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">The Masterminds</span>
-<h2 class="text-3xl font-bold text-gray-900 mt-2">Guided by Seasoned Minds</h2>
-</div>
-<div class="relative overflow-hidden">
-<div id="mentorSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-<img src="t1.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-<h3 class="text-xl font-bold">Sharath.K</h3>
-<p class="text-indigo-600 text-sm mb-4">Sr Physics lecturer, Mentor and jee strategist.| 10 years in teaching and 7 years in mentoring. </p>
-<p class="text-gray-600 italic text-sm">"In the journey to the IITs, hard work is the engine, but strategy is the steering wheel. Without a map, even the fastest car gets lost"</p>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-<img src="t2.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-<h3 class="text-xl font-bold">Prudhvi Chand</h3>
-<p class="text-indigo-600 text-sm mb-4">Physics Pedagogy Expert</p>
-<p class="text-gray-600 italic text-sm">"No two students prepare the same way.
-So we don’t give generic advice.
-We build a plan that fits the student."</p>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
-<img src="t3.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
-<h3 class="text-xl font-bold">Dr. Jyoti Khandelwal</h3>
-<p class="text-indigo-600 text-sm mb-4">15+ Years Experience | Physics, Chemistry & Biology Expert</p>
-<p class="text-gray-600 italic text-sm">"Confusion is normal in science.
-Right guidance turns doubt
-into confidence and accuracy."</p>
-</div>
-</div>
-</div>
-<button onclick="slideMentor(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-<i class="fa-solid fa-chevron-left"></i>
-</button>
-<button onclick="slideMentor(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition">
-<i class="fa-solid fa-chevron-right"></i>
-</button>
-</div>
-</div>
-</section>
-
-  
-
-<!-- ============================================================
-     REMOVED: "Day 1 to Done" Roadmap section
-     (was duplicating the 3-step solution section above)
-     ============================================================ -->
-
-<!-- ====== PARENT TESTIMONIALS (unchanged) ====== -->
-<section id="parents" class="py-20 bg-amber-50 border-y border-amber-100 overflow-hidden">
-<div class="max-w-6xl mx-auto px-4 relative">
-<h2 class="text-3xl font-bold text-center mb-12 text-amber-900">What Parents Say</h2>
-<div class="relative overflow-hidden">
-<div id="parentSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-<div class="flex-shrink-0"><img src="r11.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
-<div><p class="text-gray-700 text-sm mb-3">"My son studied in an international school till 10th grade. He was always a topper there.
-But when he joined IIT-JEE coaching in 11th, the pace shocked him. Within a few months, he lost confidence. By the time we understood the level difference, 11th grade was almost over.
-This mentorship session gave him a structured plan to cover both 11th backlog and 12th properly. Instead of randomly studying everything, he now follows a realistic roadmap built for him.
-That clarity changed everything — not just his marks, but his confidence."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Rajiv Agarwal, <span class="text-gray-500 font-normal">Parent of JEE 2026 Aspirant</span></p></div>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-<div class="flex-shrink-0"><img src="r22.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
-<div><p class="text-gray-700 text-sm mb-3">"My daughter has been attending foundation classes since 8th grade. We thought she was ahead of everyone.
-But in 11th, we realized she was studying a lot but without a clear direction. Her mock scores were not improving.
-After this session, she received a focused 90-day execution plan — what to study, what to ignore, and how to revise.
-For the first time, she stopped overstudying and started studying smart. That made the real difference."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Bhaskar Reddy, <span class="text-gray-500 font-normal">Hyderabad </span></p></div>
-</div>
-</div>
-  <div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-<div class="flex-shrink-0"><img src="r33.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
-<div><p class="text-gray-700 text-sm mb-3">"When my son entered 12th grade, he had unfinished 11th portions and growing exam anxiety.
-Coaching classes were moving fast, and nobody had time to sit and build a personal plan for him.
-This roadmap session helped him identify exactly which chapters to prioritize and which topics were not worth over-investing time in.
-As a parent, the biggest relief was seeing him wake up every day knowing exactly what to do."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— M. Shembulingachari<span class="text-gray-500 font-normal">· Parent</span></p></div>
-</div>
-</div>
-<div class="w-full flex-shrink-0 snap-center px-4">
-<div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
-<div class="flex-shrink-0"><img src="r44.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
-<div><p class="text-gray-700 text-sm mb-3">"My son studies 6–7 hours daily. We could not question his effort.
-But his scores were stuck in the same range for months. We kept wondering — what is missing?
-This mentorship session showed us that effort was not the problem — strategy was.
-Once he started following a personalized plan instead of the batch schedule, his preparation became sharper and more focused."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Suresh Iyer<span class="text-gray-500 font-normal">· Parent</span></p></div>
-</div>
-</div>
-</div>
-<button onclick="slideParent(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-left"></i></button>
-<button onclick="slideParent(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-right"></i></button>
-</div>
-</div>
-</section>
-
-<!-- ====== THIRD CTA — Parents just read testimonials, decision point ====== -->
-<div style="background: #FFFBEB; padding: 20px 0; text-align: center; border-bottom: 1px solid #FDE68A;">
-<div class="container">
-<a href="#pricing" style="display: inline-block; background: var(--accent); color: white; padding: 12px 28px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; text-decoration: none;">
-Give My Child a Clear Roadmap → ₹1,499
-</a>
-<p style="font-size: 0.7rem; color: #92400E; font-weight: 500; margin-top: 8px;">One session. One plan. Clarity before tomorrow.</p>
-</div>
-</div>
-
-  
-<section class="not-section">
-<div class="container" style="max-width: 600px;">
-<h2 class="section-title" style="text-align:center;">What This Is NOT</h2>
-<p class="section-subtitle" style="text-align:center;">Before you enroll, let's be clear about what you're getting.</p>
-<div class="not-card"><div class="not-icon">✕</div><p><strong>Not a magic shortcut.</strong> You still put in the work. We make sure every hour counts.</p></div>
-<div class="not-card"><div class="not-icon">✕</div><p><strong>Not a coaching replacement.</strong> Your coaching teaches subjects. We build the strategy layer — what to prioritize, what to skip.</p></div>
-<div class="not-card"><div class="not-icon">✕</div><p><strong>Not generic advice.</strong> Your mentor reviews your assessment BEFORE the call. The roadmap is built for YOUR gaps and YOUR timeline.</p></div>
-<div class="not-card"><div class="not-icon">✕</div><p><strong>Not a recorded video course.</strong> Live 1-on-1 phone call. Real conversation. Real plan. Real time.</p></div>
-</div>
-</section>
-
-
-  <section class="faq-section">
-<div class="container" style="max-width: 600px;">
-<h2 class="section-title" style="text-align:center;">Frequently Asked Questions</h2>
-<div style="height: 12px;"></div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>Is this just study material, or actual guidance?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">Both. You get instant access to chapter-wise question banks, predicted questions, and formula guides. But the real value is the live 1-on-1 strategy session where a mentor builds YOUR personalized day-by-day roadmap based on your specific strengths, weaknesses, and timeline.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>My child already has coaching. Will this overlap?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">No — this complements coaching, not competes with it. Coaching teaches concepts. We build the strategic layer your coaching doesn't provide: which chapters to prioritize for YOUR level, how to structure daily revision, and which topics to skip based on YOUR current standing.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>The exam is next month — is it too late?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">No. In fact, this is when strategy matters most. With limited time, every hour must count. Your mentor will build an emergency roadmap — focusing on high-weightage chapters, quick-win topics, and exam-day time management. Many of our best results come from last-month enrollees.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>Are there any hidden charges?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">₹1,499 one-time. That's it. No subscriptions, no recurring fees, no hidden charges. You get the full session + all materials. The optional Handwritten Topper Notes are +₹299 if you choose to add them.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>Who conducts the 1-on-1 session?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">Our senior IIT/NIT faculty members with 7-10 years of teaching and mentoring experience — personally trained by Prudhvi Chandh (AIR 367, Founder). Not junior tutors, not interns, not AI. These are experienced teachers who review your assessment before the call, so they already know your weak spots when they pick up the phone.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>When do we get the call after paying?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">Here's the flow: After payment, you instantly receive your study materials + a short assessment form via WhatsApp/email. You fill it in 10-15 minutes (your current level, weak chapters, study hours, mock scores). Your assigned mentor reviews your responses, and then calls you within 24 hours at your preferred time — fully prepared with insights about YOUR specific gaps.</div></div>
-</div>
-
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-<h4>What if I don't find the session useful?</h4>
-<div class="faq-toggle">+</div>
-</div>
-<div class="faq-a"><div class="faq-a-inner">In 9 years and thousands of sessions, this has happened less than 5 times. But if you don't feel clearer about your next 30 days within the first 15 minutes, we continue free until you do. Your clarity is our responsibility.</div></div>
-</div>
-</div>
-</section>
-
-
-
-<!-- ====== NEW: PROMISE/GUARANTEE — Was designed in V3, never implemented ====== -->
-<section style="background: var(--green-light); border-top: 1px solid #C6F6D5; border-bottom: 1px solid #C6F6D5; padding: 48px 0;">
-<div class="container" style="text-align: center; max-width: 560px;">
-<div style="font-size: 2rem; margin-bottom: 12px;">🛡️</div>
-<h2 style="font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">Our Promise to You</h2>
-<p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
-If you don't feel clearer about your next 30 days within the first 15 minutes of the session — we continue free until you do. We don't stop until you walk away with a roadmap you're confident about.
-</p>
-<p style="font-size: 0.82rem; color: var(--green); font-weight: 700;">
-No questions asked. Your clarity is our responsibility.
-</p>
-</div>
-</section>
-
-<!-- ====== PRICING — EDIT #4, #8: Renamed + slot scarcity + mission pricing ====== -->
-<section id="pricing" class="py-20 bg-slate-50 relative">
-<div class="max-w-3xl mx-auto px-4">
-<div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
-<div class="bg-indigo-600 p-6 text-center">
-<!-- EDIT #4: Was "Exam Shield Bundle" -->
-<h2 class="text-2xl font-bold text-white uppercase tracking-wider">IITuitions Mentorship</h2>
-<p class="text-indigo-100 mt-2">1-on-1 Strategy Session + Full Toolkit</p>
-</div>
-<div class="p-8 md:p-12">
-
-<!-- EDIT #8: Added Founder's Mission Pricing badge -->
-<div style="background: #2A1A0A; border: 1px solid #4A3520; border-radius: 8px; padding: 10px 16px; margin-bottom: 20px; font-size: 0.78rem; color: #D4920B; font-weight: 600; text-align: center;">
-🎯 Founder's Mission Pricing — Making Strategy Affordable Before JEE 2026
-</div>
-
-<div class="flex flex-col items-center mb-4">
-<span class="text-gray-400 text-lg line-through">Total Value: ₹5,000</span>
-<div class="flex items-baseline gap-2">
-<span class="text-5xl font-extrabold text-gray-900">₹1,499</span>
-<span class="text-gray-500 font-bold text-xs">ONE-TIME</span>
-</div>
-</div>
-
-<!-- EDIT #8: Added slot scarcity -->
-<div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 10px 16px; margin-bottom: 16px; font-size: 0.78rem; color: #DC2626; font-weight: 600; text-align: center;">
-⚠️ Only 25 one-on-one slots available per week (each roadmap is personally built by senior IIT/NIT mentors)
-</div>
-
-<p style="text-align: center; font-size: 0.75rem; color: #888; margin-bottom: 24px;">Less than the cost of one week of coaching — for a plan that guides the entire year.</p>
-
-            <label class="relative cursor-pointer block mb-8 group transform transition hover:scale-[1.01]">
-                <div class="absolute -top-3 right-4 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 uppercase animate-pulse">MOST STUDENTS ADD THIS</div>
-                <input type="checkbox" id="notes-addon" class="sr-only">
-                <div class="p-5 rounded-xl border-2 border-dashed border-yellow-400 bg-yellow-50/50 hover:bg-yellow-50 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="checkbox-square w-6 h-6 flex-shrink-0 rounded border-2 border-yellow-400 flex items-center justify-center bg-white transition-colors mt-1">
-                            <i class="fa-solid fa-check text-white text-xs opacity-0 check-icon"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-center">
-                                <h4 class="font-bold text-gray-900">Add Handwritten Topper Notes</h4>
-                                <span class="text-yellow-700 bg-yellow-200 text-[10px] font-bold px-2 py-0.5 rounded">+₹299</span>
-                            </div>
-                            <p class="text-xs text-gray-700 mt-1 italic">300+ pages of high-yield summary notes. Skip the bulky textbooks,Study Only What Matters.</p>
-                        </div>
-                    </div>
-                </div>
-            </label>
-           
-            
-            
-  
-            <button id="main-cta"
-  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-5 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">
-  Enroll Now
-</button>
-
-<div class="hero-trust-icons mt-4">
-    <span>🔒 Secure Payment</span>
-    <span>⚡ Instant Access</span>
-    <span>🛡️ Clarity Guarantee</span>
-</div>
-        <p class="text-[9px] text-gray-400 mt-3 italic text-center leading-relaxed px-4 pb-4">
-            This is a digital program with instant access. Refunds are not applicable once materials are delivered.
-        </p>
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Built For Every Stage</div>
+    <h2 class="section-title" style="text-align:center;">This Mentorship Is For You If…</h2>
+    <div style="height:28px;"></div>
+    <div class="audience-grid">
+      <div class="audience-card"><span class="emoji">🌱</span><h4>Just Entered 11th Grade</h4><p>You want a strong foundation plan so you don't waste your most important year.</p></div>
+      <div class="audience-card"><span class="emoji">⚡</span><h4>In 12th With Backlogs</h4><p>11th topics are unclear, 12th is piling up, and you need a recovery roadmap — fast.</p></div>
+      <div class="audience-card"><span class="emoji">🔄</span><h4>Dropper / Long-Term Student</h4><p>This is your second chance. You need a focused plan that doesn't repeat last year's mistakes.</p></div>
+      <div class="audience-card"><span class="emoji">🚨</span><h4>JEE Is Weeks Away</h4><p>No time for trial and error. You need an emergency strategy — which chapters to hit, which to skip, how to maximise marks NOW.</p></div>
     </div>
-</div>
+  </div>
 </section>
 
-<!-- ============================================================
-     REMOVED: "Offer Closing Soon" fake countdown timer section
-     (was showing fake ₹2999 price increase timer)
-     ============================================================ -->
+<!-- TRANSFORMATIONS — FIX 1: absolute image URLs -->
+<section id="results" class="py-20 bg-white overflow-hidden relative">
+  <div class="max-w-6xl mx-auto px-4 relative">
+    <h2 class="text-3xl font-bold text-center mb-12">Transformations</h2>
+    <div class="relative overflow-hidden">
+      <div id="hofSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            <img src="https://mentorship-blue-gamma.vercel.app/stu1.png" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <div class="flex text-indigo-500 mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <h3 class="text-lg font-bold">K.Nikshiptha</h3>
+              <p class="text-sm text-gray-500 mb-2">Student in KMC Warangal · IIT Rank 2252</p>
+              <div class="score-row"><span class="score-label">Before:</span><span class="score-val score-before">92</span><span class="score-arrow">→</span><span class="score-label">After:</span><span class="score-val score-after">178</span></div>
+              <p class="text-gray-600 italic text-sm">"In just 4 months, my JEE score leapt forward by 86 marks. I wasted an entire year going by coaching guesswork."</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            
+            <img src="https://mentorship-blue-gamma.vercel.app/st2.png" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <div class="flex text-indigo-500 mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <h3 class="text-lg font-bold">Stains Koduri</h3>
+              <p class="text-sm text-gray-500 mb-2">NIT-W Rank 2512</p>
+              <div class="score-row"><span class="score-label">Before:</span><span class="score-val score-before">110</span><span class="score-arrow">→</span><span class="score-label">After:</span><span class="score-val score-after">162</span></div>
+              <p class="text-gray-600 italic text-sm">"I moved up 148 AIR positions while juggling school and coaching. IITuitions gave me a clear daily plan."</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            <img src="https://mentorship-blue-gamma.vercel.app/stu3.png" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <div class="flex text-indigo-500 mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <h3 class="text-lg font-bold">Tummala Baladitya</h3>
+              <p class="text-sm text-gray-500 mb-2">NIT-W Rank 1517</p>
+              <div class="score-row"><span class="score-label">Before:</span><span class="score-val score-before">95</span><span class="score-arrow">→</span><span class="score-label">After:</span><span class="score-val score-after">155</span></div>
+              <p class="text-gray-600 italic text-sm">"After only 2 months with my mentor, I saw a real improvement in my mock exam performance and gained confidence in crucial topics."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="slideHOF(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="slideHOF(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
 
-<!-- ====== FOOTER — EDIT #9: Mentorship-focused, not notes-focused ====== -->
+<!-- WHATSAPP PROOF — FIX 1: absolute image URLs -->
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-serif text-3xl font-bold text-center mb-4">Unfiltered Feedback</h2>
+    <p class="text-center text-gray-500 mb-10">Real conversations. No edits.</p>
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar">
+      <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200"><img src="https://mentorship-blue-gamma.vercel.app/ww1.png" alt="WhatsApp Review 1" class="w-full h-auto"></div>
+      <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200"><img src="https://mentorship-blue-gamma.vercel.app/w2.png" alt="WhatsApp Review 2" class="w-full h-auto"></div>
+      <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200"><img src="https://mentorship-blue-gamma.vercel.app/w3.png" alt="WhatsApp Review 3" class="w-full h-auto"></div>
+      <div class="min-w-[85%] md:min-w-[30%] snap-center rounded-xl overflow-hidden shadow-2xl border border-gray-200"><img src="https://mentorship-blue-gamma.vercel.app/w4.png" alt="WhatsApp Review 4" class="w-full h-auto"></div>
+    </div>
+    <div class="text-center mt-8"><p class="text-sm font-semibold text-green-600 flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i> Verified WhatsApp Chats</p></div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<div style="background:var(--accent);padding:24px 0;text-align:center;">
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.9);font-size:0.88rem;font-weight:600;margin-bottom:12px;">Seen enough? Get YOUR roadmap today.</p>
+    <a href="#pricing" style="display:inline-block;background:white;color:var(--accent);padding:12px 28px;border-radius:10px;font-size:0.92rem;font-weight:700;text-decoration:none;">Enroll Now → ₹1,499</a>
+  </div>
+</div>
+
+<!-- FACULTY — FIX 10: Removed Prudhvi, kept Sharath + Dr. Jyoti only -->
+<section id="mentors" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">The Masterminds</span>
+      <h2 class="text-3xl font-bold text-gray-900 mt-2">Guided by Seasoned Minds</h2>
+    </div>
+    <div class="relative overflow-hidden">
+      <div id="mentorSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
+            <img src="https://mentorship-blue-gamma.vercel.app/t1.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
+            <h3 class="text-xl font-bold">Sharath K.</h3>
+            <p class="text-indigo-600 text-sm mb-4">Sr. Physics Lecturer &amp; JEE Strategist · 10 years teaching, 7 years mentoring</p>
+            <p class="text-gray-600 italic text-sm">"In the journey to the IITs, hard work is the engine, but strategy is the steering wheel. Without a map, even the fastest car gets lost."</p>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center max-w-md mx-auto">
+            <img src="https://mentorship-blue-gamma.vercel.app/t3.png" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-50 object-cover">
+            <h3 class="text-xl font-bold">Dr. Jyoti Khandelwal</h3>
+            <p class="text-indigo-600 text-sm mb-4">15+ Years Experience · Physics, Chemistry &amp; Biology Expert</p>
+            <p class="text-gray-600 italic text-sm">"Confusion is normal in science. Right guidance turns doubt into confidence and accuracy."</p>
+          </div>
+        </div>
+      </div>
+      <button onclick="slideMentor(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="slideMentor(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- PARENT TESTIMONIALS — FIX 1: absolute image URLs -->
+<section id="parents" class="py-20 bg-amber-50 border-y border-amber-100 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 relative">
+    <h2 class="text-3xl font-bold text-center mb-12 text-amber-900">What Parents Say</h2>
+    <div class="relative overflow-hidden">
+      <div id="parentSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+            <div class="flex-shrink-0"><img src="https://mentorship-blue-gamma.vercel.app/r11.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
+            <div><p class="text-gray-700 text-sm mb-3">"My son studied in an international school till 10th grade. He was always a topper there. But when he joined IIT-JEE coaching in 11th, the pace shocked him. This mentorship session gave him a structured plan. That clarity changed everything — not just his marks, but his confidence."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Rajiv Agarwal, <span class="text-gray-500 font-normal">Parent of JEE 2026 Aspirant</span></p></div>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+            <div class="flex-shrink-0"><img src="https://mentorship-blue-gamma.vercel.app/r22.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
+            <div><p class="text-gray-700 text-sm mb-3">"My daughter was studying a lot but without a clear direction. Her mock scores were not improving. After this session, she received a focused 90-day execution plan. For the first time, she stopped overstudying and started studying smart."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Bhaskar Reddy, <span class="text-gray-500 font-normal">Hyderabad</span></p></div>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+            <div class="flex-shrink-0"><img src="https://mentorship-blue-gamma.vercel.app/r33.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
+            <div><p class="text-gray-700 text-sm mb-3">"Coaching classes were moving fast, and nobody had time to sit and build a personal plan for my son. This roadmap session helped him identify exactly which chapters to prioritize. As a parent, the biggest relief was seeing him wake up every day knowing exactly what to do."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— M. Shembulingachari, <span class="text-gray-500 font-normal">Parent</span></p></div>
+          </div>
+        </div>
+        <div class="w-full flex-shrink-0 snap-center px-4">
+          <div class="bg-white p-6 rounded-xl border border-amber-100 shadow-sm max-w-xl mx-auto flex gap-4 items-start">
+            <div class="flex-shrink-0"><img src="https://mentorship-blue-gamma.vercel.app/r44.png" class="w-12 h-12 rounded-full object-cover bg-gray-200"></div>
+            <div><p class="text-gray-700 text-sm mb-3">"My son studies 6–7 hours daily. But his scores were stuck in the same range for months. This mentorship session showed us that effort was not the problem — strategy was. Once he started following a personalized plan, his preparation became sharper and more focused."</p><div class="flex text-yellow-400 mb-2 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="text-xs font-semibold text-gray-900">— Suresh Iyer, <span class="text-gray-500 font-normal">Parent</span></p></div>
+          </div>
+        </div>
+      </div>
+      <button onclick="slideParent(-1)" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="slideParent(1)" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow border rounded-full w-10 h-10 items-center justify-center hover:scale-110 transition"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- AMBER CTA -->
+<div style="background:#FFFBEB;padding:20px 0;text-align:center;border-bottom:1px solid #FDE68A;">
+  <div class="container">
+    <a href="#pricing" style="display:inline-block;background:var(--accent);color:white;padding:12px 28px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none;">Give My Child a Clear Roadmap → ₹1,499</a>
+    <p style="font-size:0.7rem;color:#92400E;font-weight:500;margin-top:8px;">One session. One plan. Clarity before tomorrow.</p>
+  </div>
+</div>
+
+<!-- NEW: BRIDGE SECTION — mentorship → full coaching -->
+<section class="bridge-section">
+  <div class="container">
+    <div class="bridge-inner">
+      <div class="bridge-eyebrow">Want more than one session?</div>
+      <div class="bridge-title">Some students want a plan.<br>Others want a mentor who stays with them all year.</div>
+      <div class="bridge-sub">This mentorship session gives your child a roadmap and a strategy. For students who want ongoing 1-on-1 support — weekly sessions, continuous doubt clearing, parent reviews and course corrections every two weeks — iituitions offers full-year coaching with dedicated IIT/NIT mentors.</div>
+      <ul class="bridge-points">
+        <li>100% 1-on-1 sessions — no batches, ever</li>
+        <li>Dedicated mentor assigned only to your child</li>
+        <li>Every session recorded — revisit anytime</li>
+        <li>Weekly parent review calls</li>
+        <li>30-day money-back + progress guarantee</li>
+      </ul>
+      <a href="https://www.iituitions.com" class="bridge-cta" target="_blank">Explore Full Coaching at iituitions.com →</a>
+      <div class="bridge-note">Full coaching starts from ₹20,000/month · Max 50 students/year</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS IS NOT — FIX 4: color fixed -->
+<section class="not-section">
+  <div class="container" style="max-width:600px;">
+    <h2 class="section-title" style="text-align:center;">What This Is NOT</h2>
+    <p class="section-subtitle" style="text-align:center;">Before you enroll, let's be clear about what you're getting.</p>
+    <div class="not-card"><div class="not-icon">✕</div><p><strong>Not a magic shortcut.</strong> You still put in the work. We make sure every hour counts.</p></div>
+    <div class="not-card"><div class="not-icon">✕</div><p><strong>Not a coaching replacement.</strong> Your coaching teaches subjects. We build the strategy layer — what to prioritize, what to skip.</p></div>
+    <div class="not-card"><div class="not-icon">✕</div><p><strong>Not generic advice.</strong> Your mentor reviews your assessment BEFORE the call. The roadmap is built for YOUR gaps and YOUR timeline.</p></div>
+    <div class="not-card"><div class="not-icon">✕</div><p><strong>Not a recorded video course.</strong> Live 1-on-1 phone call. Real conversation. Real plan. Real time.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container" style="max-width:600px;">
+    <h2 class="section-title" style="text-align:center;">Frequently Asked Questions</h2>
+    <div style="height:12px;"></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>Is this just study material, or actual guidance?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Both. You get instant access to chapter-wise question banks, predicted questions, and formula guides. But the real value is the live 1-on-1 strategy session where a mentor builds YOUR personalized day-by-day roadmap based on your specific strengths, weaknesses, and timeline.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>My child already has coaching. Will this overlap?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">No — this complements coaching, not competes with it. Coaching teaches concepts. We build the strategic layer your coaching doesn't provide: which chapters to prioritize for YOUR level, how to structure daily revision, and which topics to skip based on YOUR current standing.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>The exam is next month — is it too late?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">No. In fact, this is when strategy matters most. With limited time, every hour must count. Your mentor will build an emergency roadmap — focusing on high-weightage chapters, quick-win topics, and exam-day time management. Many of our best results come from last-month enrollees.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>Are there any hidden charges?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">₹1,499 one-time. That's it. No subscriptions, no recurring fees, no hidden charges. You get the full session + all materials. The optional Handwritten Topper Notes are +₹299 if you choose to add them.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>Who conducts the 1-on-1 session?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Our senior IIT/NIT faculty members with 7-10 years of teaching and mentoring experience — personally trained by Prudhvi Chand (AIR 367, Founder). Not junior tutors, not interns, not AI. These are experienced teachers who review your assessment before the call.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>When do we get the call after paying?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">After payment, you instantly receive your study materials + a short assessment form via WhatsApp/email. Fill it in 10-15 minutes. Your assigned mentor reviews your responses and calls you within 24 hours at your preferred time — fully prepared with insights about YOUR specific gaps.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h4>What if I don't find the session useful?</h4><div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">If you don't feel clearer about your next 30 days within the first 15 minutes, we continue free until you do. Your clarity is our responsibility.</div></div></div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="background:var(--green-light);border-top:1px solid #C6F6D5;border-bottom:1px solid #C6F6D5;padding:48px 0;">
+  <div class="container" style="text-align:center;max-width:560px;">
+    <div style="font-size:2rem;margin-bottom:12px;">🛡️</div>
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:var(--text-primary);margin-bottom:12px;line-height:1.3;">Our Promise to You</h2>
+    <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">If you don't feel clearer about your next 30 days within the first 15 minutes of the session — we continue free until you do. We don't stop until you walk away with a roadmap you're confident about.</p>
+    <p style="font-size:0.82rem;color:var(--green);font-weight:700;">No questions asked. Your clarity is our responsibility.</p>
+  </div>
+</section>
+
+<!-- PRICING — FIX 8: consistent 8 slots -->
+<section id="pricing" class="py-20 bg-slate-50 relative">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
+      <div class="bg-indigo-600 p-6 text-center">
+        <h2 class="text-2xl font-bold text-white uppercase tracking-wider">IITuitions Mentorship</h2>
+        <p class="text-indigo-100 mt-2">1-on-1 Strategy Session + Full Toolkit</p>
+      </div>
+      <div class="p-8 md:p-12">
+        <div style="background:#2A1A0A;border:1px solid #4A3520;border-radius:8px;padding:10px 16px;margin-bottom:20px;font-size:0.78rem;color:#D4920B;font-weight:600;text-align:center;">🎯 Founder's Mission Pricing — Making Strategy Affordable Before JEE 2026</div>
+        <div class="flex flex-col items-center mb-4">
+          <span class="text-gray-400 text-lg line-through">Total Value: ₹5,000</span>
+          <div class="flex items-baseline gap-2">
+            <span class="text-5xl font-extrabold text-gray-900">₹1,499</span>
+            <span class="text-gray-500 font-bold text-xs">ONE-TIME</span>
+          </div>
+        </div>
+        <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin-bottom:16px;font-size:0.78rem;color:#DC2626;font-weight:600;text-align:center;">⚠️ Only 8 one-on-one slots available per week (each roadmap is personally built by senior IIT/NIT mentors)</div>
+        <p style="text-align:center;font-size:0.75rem;color:#888;margin-bottom:24px;">Less than the cost of one week of coaching — for a plan that guides the entire year.</p>
+        <label class="relative cursor-pointer block mb-8 group transform transition hover:scale-[1.01]">
+          <div class="absolute -top-3 right-4 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 uppercase animate-pulse">MOST STUDENTS ADD THIS</div>
+          <input type="checkbox" id="notes-addon" class="sr-only">
+          <div class="p-5 rounded-xl border-2 border-dashed border-yellow-400 bg-yellow-50/50 hover:bg-yellow-50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="checkbox-square w-6 h-6 flex-shrink-0 rounded border-2 border-yellow-400 flex items-center justify-center bg-white transition-colors mt-1"><i class="fa-solid fa-check text-white text-xs opacity-0 check-icon"></i></div>
+              <div class="flex-1">
+                <div class="flex justify-between items-center">
+                  <h4 class="font-bold text-gray-900">Add Handwritten Topper Notes</h4>
+                  <span class="text-yellow-700 bg-yellow-200 text-[10px] font-bold px-2 py-0.5 rounded">+₹299</span>
+                </div>
+                <p class="text-xs text-gray-700 mt-1 italic">300+ pages of high-yield summary notes. Study only what matters.</p>
+              </div>
+            </div>
+          </div>
+        </label>
+        <button id="main-cta" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl py-5 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">Enroll Now</button>
+        <div class="hero-trust-icons mt-4"><span>🔒 Secure Payment</span><span>⚡ Instant Access</span><span>🛡️ Clarity Guarantee</span></div>
+        <p class="text-[9px] text-gray-400 mt-3 italic text-center leading-relaxed px-4 pb-4">This is a digital program with instant access. Refunds are not applicable once materials are delivered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER — FIX 2 & 3: WhatsApp number updated, legal links absolute -->
 <footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-gray-300 py-24 text-center">
-<div class="max-w-3xl mx-auto px-4">
-<!-- EDIT #9: Was "Don't Waste Another Day" + notes-focused copy -->
-<h2 class="text-4xl md:text-5xl font-serif font-semibold text-white mb-6">Every Day Without a Plan Is a Day Closer to the Exam With No Direction.</h2>
-<p class="text-lg text-gray-400 mb-10">Get your personalized roadmap today. Your mentor is ready.</p>
-<a href="#pricing" class="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg px-12 py-5 rounded-full shadow-xl transition">Claim My Child’s 1-on-1 Slot → ₹1,499</a>
-<p class="text-sm text-gray-500 mt-6">Have questions? <a href="https://wa.me/918639221271" class="text-green-400 hover:text-green-300 font-semibold">WhatsApp us →</a></p>
-<div class="mt-20">
-<p class="text-2xl font-semibold text-white tracking-wide">IITuitions Mentorship</p>
-<p class="text-sm text-gray-500 mt-2">Managed by <span class="text-gray-300 font-medium">IITUITIONSHUB LLP</span></p>
-<p class="text-sm text-gray-500 mt-4">Website: iituitions.com/mentorship &nbsp;|&nbsp; Email:iituitions@gmail.com </p>
-<div class="flex justify-center gap-6 mt-6 text-sm text-gray-400">
-<a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
-<a href="terms-and-conditions.html" class="hover:text-white">Terms & Conditions</a>
-<a href="refund-policy.html" class="hover:text-white">Refund Policy</a>
-</div>
-<p class="text-xs text-gray-600 mt-10">© 2026 IITUITIONSHUB LLP. All rights reserved.</p>
-</div>
-</div>
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl font-serif font-semibold text-white mb-6">Every Day Without a Plan Is a Day Closer to the Exam With No Direction.</h2>
+    <p class="text-lg text-gray-400 mb-10">Get your personalized roadmap today. Your mentor is ready.</p>
+    <a href="#pricing" class="inline-block bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg px-12 py-5 rounded-full shadow-xl transition">Claim My Child's 1-on-1 Slot → ₹1,499</a>
+    
+    <p class="text-sm text-gray-500 mt-6">Have questions? <a href="https://wa.me/919010031000?text=Hi!%20I%20have%20a%20query%20about%20the%201-on-1%20JEE%20Mentorship." class="text-green-400 hover:text-green-300 font-semibold">WhatsApp us →</a></p>
+    <div class="mt-20">
+      <p class="text-2xl font-semibold text-white tracking-wide">IITuitions Mentorship</p>
+      <p class="text-sm text-gray-500 mt-2">Managed by <span class="text-gray-300 font-medium">IITUITIONSHUB LLP</span></p>
+      <p class="text-sm text-gray-500 mt-4">Website: iituitions.com/mentorship &nbsp;|&nbsp; Email: iituitions@gmail.com</p>
+      <div class="flex justify-center gap-6 mt-6 text-sm text-gray-400">
+        
+        <a href="https://mentorship-blue-gamma.vercel.app/privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+        <a href="https://mentorship-blue-gamma.vercel.app/terms-and-conditions.html" class="hover:text-white">Terms &amp; Conditions</a>
+        <a href="https://mentorship-blue-gamma.vercel.app/refund-policy.html" class="hover:text-white">Refund Policy</a>
+      </div>
+      <p class="text-xs text-gray-600 mt-10">© 2026 IITUITIONSHUB LLP. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
-<!-- ====== STICKY MOBILE BAR (unchanged) ====== -->
+<!-- STICKY MOBILE BAR -->
 <div id="sticky-bar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-40 md:hidden sticky-cta shadow-2xl">
-<div class="flex justify-between items-center gap-4">
-<div class="flex flex-col">
-<span class="text-xs text-gray-400 line-through">₹5000</span>
-<span id="sticky-price" class="text-lg font-bold text-gray-900">₹1499</span>
-</div>
-<a id="sticky-cta" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md cursor-pointer">Enroll Now</a>
-</div>
+  <div class="flex justify-between items-center gap-4">
+    <div class="flex flex-col">
+      <span class="text-xs text-gray-400 line-through">₹5000</span>
+      <span id="sticky-price" class="text-lg font-bold text-gray-900">₹1499</span>
+    </div>
+    <a id="sticky-cta" class="flex-1 bg-indigo-600 text-white text-center font-bold py-3 rounded-lg shadow-md cursor-pointer">Enroll Now</a>
+  </div>
 </div>
 
-<!-- ====== WHATSAPP FLOAT (unchanged) ====== -->
-<a href="https://wa.me/918639221271?text=Hi!%20I%20have%20a%20query%20about%20the%201-on-1%20JEE%20Mentorship."
-target="_blank" rel="noopener noreferrer"
-class="fixed z-50 right-4 bottom-[90px] md:bottom-8 bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition-all transform hover:scale-110">
-<i class="fa-brands fa-whatsapp text-3xl"></i>
+<!-- WHATSAPP FLOAT — FIX 2: number updated to 9010031000 -->
+<a href="https://wa.me/919010031000?text=Hi!%20I%20have%20a%20query%20about%20the%201-on-1%20JEE%20Mentorship."
+   target="_blank" rel="noopener noreferrer"
+   class="fixed z-50 right-4 bottom-[90px] md:bottom-8 bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:bg-[#128C7E] transition-all transform hover:scale-110">
+  <i class="fa-brands fa-whatsapp text-3xl"></i>
 </a>
 
-<!-- ====== SCRIPT ====== -->
 <script>
 const ADDON_PRICE = 299;
-const BASE_PRICE = 1499;
-
+const BASE_PRICE  = 1499;
 const elements = {
-  checkbox: document.getElementById('notes-addon'),
-  mainBtn: document.getElementById('main-cta'),
+  checkbox:    document.getElementById('notes-addon'),
+  mainBtn:     document.getElementById('main-cta'),
   stickyPrice: document.getElementById('sticky-price')
 };
 
 function updateDisplay() {
   const total = elements.checkbox.checked ? BASE_PRICE + ADDON_PRICE : BASE_PRICE;
-  if (elements.checkbox.checked) {
-    elements.mainBtn.textContent = 'RoadMap + Handwritten Notes @ ₹' + total;
-  } else {
-    elements.mainBtn.textContent = 'Give My Child a Clear Roadmap @ ₹' + total;
-  }
+  elements.mainBtn.textContent = elements.checkbox.checked
+    ? 'RoadMap + Handwritten Notes @ ₹' + total
+    : 'Give My Child a Clear Roadmap @ ₹' + total;
   if (elements.stickyPrice) elements.stickyPrice.textContent = '₹' + total;
 }
 
+// FIX 7: Updated to JEE Session 2 date + hide if expired
 function updateJeeCountdown() {
+// ⚠️ ACTION REQUIRED: Update jeeDate every exam cycle
+  // Current: JEE Mains Session 2 — April 5, 2026
+  // Next update needed: Change to JEE Mains 2027 date once April 2026 session passes
   const jeeDate = new Date('2026-04-05T09:00:00+05:30');
-  const now = new Date();
-  const diff = Math.ceil((jeeDate - now) / (1000 * 60 * 60 * 24));
-  const el = document.getElementById('daysLeft');
-  if (el && diff > 0) el.textContent = diff;
+  const now     = new Date();
+  const diff    = Math.ceil((jeeDate - now) / (1000 * 60 * 60 * 24));
+  const bar     = document.getElementById('urgency-bar');
+  const el      = document.getElementById('daysLeft');
+  if (diff <= 0) {
+    // Hide urgency bar if exam has passed
+    if (bar) bar.style.display = 'none';
+  } else {
+    if (el) el.textContent = diff;
+  }
 }
 
 function paymentAction() {
@@ -1726,25 +797,22 @@ function paymentAction() {
 
 function init() {
   updateJeeCountdown();
-
   const stickyObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const bar = document.getElementById('sticky-bar');
       entry.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
     });
   }, { threshold: 0 });
-  stickyObserver.observe(document.querySelector('section'));
-
+  const firstSection = document.querySelector('section');
+  if (firstSection) stickyObserver.observe(firstSection);
   elements.checkbox.addEventListener('change', updateDisplay);
   elements.mainBtn.addEventListener('click', paymentAction);
-
   const stickyBtn = document.getElementById("sticky-cta");
   if (stickyBtn) stickyBtn.addEventListener("click", paymentAction);
-
   updateDisplay();
 }
 
-function slideHOF(d) { const s = document.getElementById('hofSlider'); s.scrollBy({ left: d * s.clientWidth, behavior: 'smooth' }); }
+function slideHOF(d)    { const s = document.getElementById('hofSlider');    s.scrollBy({ left: d * s.clientWidth, behavior: 'smooth' }); }
 function slideMentor(d) { const s = document.getElementById('mentorSlider'); s.scrollBy({ left: d * s.clientWidth, behavior: 'smooth' }); }
 function slideParent(d) { const s = document.getElementById('parentSlider'); s.scrollBy({ left: d * s.clientWidth, behavior: 'smooth' }); }
 
